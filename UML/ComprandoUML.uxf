@@ -1,0 +1,76 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>60</x><y>350</y><w>240</w><h>110</h></coordinates><panel_attributes>_object: Commerce
+--
+address: Address
+storeHours:[Dia,horarioApertura,horarioCierre]
+maxRange: Int
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>350</y><w>210</w><h>150</h></coordinates><panel_attributes>_object: User
+--
+username: string
+password: security string
+email: string
+alert: Boolean
+Shoppingcart: [Product,Int,Commerce]
+history:[Shoppingart]
+
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>580</y><w>210</w><h>150</h></coordinates><panel_attributes>_object: Product
+--
+name: String
+brand: String
+stock: Int
+price: Int
+image: Image
+Category: Category
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>400</y><w>210</w><h>50</h></coordinates><panel_attributes>manager
+lt=&lt;-
+
+m1=0..1</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>450</y><w>70</w><h>150</h></coordinates><panel_attributes>products
+lt=&lt;-
+
+m1=1..n</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>530</y><w>210</w><h>90</h></coordinates><panel_attributes>_object: Offer
+--
+startDate : LocalDateTime
+endDate : LocalDateTime
+discount : int
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>610</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n</panel_attributes><additional_attributes>10;50;130;50;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>360</y><w>210</w><h>70</h></coordinates><panel_attributes>_object: Class_purcharseOrder
+--
+price: Int
+
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>110</y><w>210</w><h>70</h></coordinates><panel_attributes>_object: delivery
+--
+shippingAddress: Address
+distance: Int
+date: LocalDateTime
+
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>260</y><w>100</w><h>50</h></coordinates><panel_attributes>/AbstractClass/
+Shipment Type </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>60</y><w>210</w><h>120</h></coordinates><panel_attributes>_object: onSite
+--
+date: LocalDateTime
+--
+gestionarTurno(local): LocalDateTime
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>260</y><w>210</w><h>70</h></coordinates><panel_attributes> enum_Area
+--
+areas</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>790</y><w>210</w><h>70</h></coordinates><panel_attributes>_enum: Category
+--
+categories
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>630</y><w>210</w><h>70</h></coordinates><panel_attributes>_object: Prefferences
+--
+id: Long="36548"
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>530</y><w>100</w><h>30</h></coordinates><panel_attributes>/AbstractClass/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>720</y><w>50</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>170</y><w>130</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;10;110;90</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>170</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>120;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>300</y><w>50</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>490</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>550</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>290</y><w>100</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes><additional_attributes>80;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>380</y><w>220</w><h>50</h></coordinates><panel_attributes>purcharseOrders
+lt=&lt;-
+
+m1=1..n</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>570</y><w>210</w><h>70</h></coordinates><panel_attributes>_object: shoppingCart
+--
+products: ArrayList
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>980</x><y>420</y><w>50</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..1</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>450</y><w>60</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n</panel_attributes><additional_attributes>30;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>630</y><w>740</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..n</panel_attributes><additional_attributes>10;90;720;90;720;10</additional_attributes></element></diagram>
