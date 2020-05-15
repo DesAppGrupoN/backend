@@ -23,9 +23,6 @@
 hs_err_pid*
 
 # Idea
-ComprandoEnCasa-backend/.idea
 .idea/
-DesApp-GrupoN/.idea
-ComprandoEnCasa-backend/target
-ComprandoEnCasa-backend/comprandoEnCasa.iml
+target/
 
