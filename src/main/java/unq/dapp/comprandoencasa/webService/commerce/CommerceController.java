@@ -1,9 +1,9 @@
-package unq.dapp.comprandoEnCasa.webService.commerce;
+package unq.dapp.comprandoencasa.webService.commerce;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.Commerce;
-import unq.dapp.comprandoEnCasa.services.commerce.CommerceService;
+import unq.dapp.comprandoencasa.model.domain.commerce.Commerce;
+import unq.dapp.comprandoencasa.services.commerce.CommerceService;
 
 import java.util.List;
 

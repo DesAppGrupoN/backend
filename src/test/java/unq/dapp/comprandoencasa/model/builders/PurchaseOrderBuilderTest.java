@@ -1,9 +1,9 @@
-package unq.dapp.comprandoEnCasa.model.builders;
+package unq.dapp.comprandoencasa.model.builders;
 
 import org.junit.jupiter.api.Test;
-import unq.dapp.comprandoEnCasa.model.domain.PurchaseOrder;
-import unq.dapp.comprandoEnCasa.model.domain.ShoppingCart;
-import unq.dapp.comprandoEnCasa.model.domain.shipment.ShipmentType;
+import unq.dapp.comprandoencasa.model.domain.PurchaseOrder;
+import unq.dapp.comprandoencasa.model.domain.ShoppingCart;
+import unq.dapp.comprandoencasa.model.domain.shipment.ShipmentType;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;

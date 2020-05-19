@@ -1,7 +1,7 @@
-package unq.dapp.comprandoEnCasa.model.domain;
+package unq.dapp.comprandoencasa.model.domain;
 
 
-import unq.dapp.comprandoEnCasa.model.domain.shipment.ShipmentType;
+import unq.dapp.comprandoencasa.model.domain.shipment.ShipmentType;
 
 import java.time.LocalDate;
 

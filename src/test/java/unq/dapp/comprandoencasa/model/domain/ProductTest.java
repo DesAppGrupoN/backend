@@ -1,9 +1,9 @@
-package unq.dapp.comprandoEnCasa.model.domain;
+package unq.dapp.comprandoencasa.model.domain;
 
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static unq.dapp.comprandoEnCasa.model.domain.Category.LIMPIEZA;
+import static unq.dapp.comprandoencasa.model.domain.Category.LIMPIEZA;
 
 public class ProductTest {
 

@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain.thresholds;
+package unq.dapp.comprandoencasa.model.domain.thresholds;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

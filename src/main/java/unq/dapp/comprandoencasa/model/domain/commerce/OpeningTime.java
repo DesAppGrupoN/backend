@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain.commerce;
+package unq.dapp.comprandoencasa.model.domain.commerce;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;

@@ -1,6 +1,6 @@
-package unq.dapp.comprandoEnCasa.model.domain.offers;
+package unq.dapp.comprandoencasa.model.domain.offers;
 
-import unq.dapp.comprandoEnCasa.model.domain.Product;
+import unq.dapp.comprandoencasa.model.domain.Product;
 
 public class ProductOffer extends AbstractOffer {
 

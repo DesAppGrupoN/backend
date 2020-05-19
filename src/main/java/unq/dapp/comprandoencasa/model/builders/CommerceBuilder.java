@@ -1,11 +1,11 @@
-package unq.dapp.comprandoEnCasa.model.builders;
+package unq.dapp.comprandoencasa.model.builders;
 
 
 
-import unq.dapp.comprandoEnCasa.model.domain.commerce.AttentionSchedule;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.Commerce;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.PayMethods;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.Sector;
+import unq.dapp.comprandoencasa.model.domain.commerce.AttentionSchedule;
+import unq.dapp.comprandoencasa.model.domain.commerce.Commerce;
+import unq.dapp.comprandoencasa.model.domain.commerce.PayMethods;
+import unq.dapp.comprandoencasa.model.domain.commerce.Sector;
 
 import java.util.ArrayList;
 import java.util.List;

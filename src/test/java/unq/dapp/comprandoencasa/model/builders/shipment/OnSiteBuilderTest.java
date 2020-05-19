@@ -1,9 +1,9 @@
-package unq.dapp.comprandoEnCasa.model.builders.shipment;
+package unq.dapp.comprandoencasa.model.builders.shipment;
 
 
 import org.junit.jupiter.api.Test;
-import unq.dapp.comprandoEnCasa.model.domain.Turn;
-import unq.dapp.comprandoEnCasa.model.domain.shipment.OnSite;
+import unq.dapp.comprandoencasa.model.domain.Turn;
+import unq.dapp.comprandoencasa.model.domain.shipment.OnSite;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 

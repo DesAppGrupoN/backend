@@ -1,8 +1,8 @@
-package unq.dapp.comprandoEnCasa.model.builders;
+package unq.dapp.comprandoencasa.model.builders;
 
 import org.junit.jupiter.api.Test;
-import unq.dapp.comprandoEnCasa.model.domain.ShoppingCart;
-import unq.dapp.comprandoEnCasa.model.domain.User;
+import unq.dapp.comprandoencasa.model.domain.ShoppingCart;
+import unq.dapp.comprandoencasa.model.domain.User;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 

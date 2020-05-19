@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain;
+package unq.dapp.comprandoencasa.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

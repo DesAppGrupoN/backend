@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain.commerce;
+package unq.dapp.comprandoencasa.model.domain.commerce;
 
 public enum PayMethods {
     CASH,

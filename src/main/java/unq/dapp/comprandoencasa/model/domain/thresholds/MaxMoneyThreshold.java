@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain.thresholds;
+package unq.dapp.comprandoencasa.model.domain.thresholds;
 
 public class MaxMoneyThreshold extends Threshold {
 

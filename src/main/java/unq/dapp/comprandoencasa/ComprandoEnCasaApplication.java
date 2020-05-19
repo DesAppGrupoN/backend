@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa;
+package unq.dapp.comprandoencasa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

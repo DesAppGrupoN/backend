@@ -1,6 +1,6 @@
-package unq.dapp.comprandoEnCasa.model.domain.thresholds;
+package unq.dapp.comprandoencasa.model.domain.thresholds;
 
-import unq.dapp.comprandoEnCasa.model.domain.Category;
+import unq.dapp.comprandoencasa.model.domain.Category;
 
 public class CategoryThreshold extends Threshold {
 

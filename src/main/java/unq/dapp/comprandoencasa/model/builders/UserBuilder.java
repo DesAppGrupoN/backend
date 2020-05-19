@@ -1,8 +1,8 @@
-package unq.dapp.comprandoEnCasa.model.builders;
+package unq.dapp.comprandoencasa.model.builders;
 
 
-import unq.dapp.comprandoEnCasa.model.domain.ShoppingCart;
-import unq.dapp.comprandoEnCasa.model.domain.User;
+import unq.dapp.comprandoencasa.model.domain.ShoppingCart;
+import unq.dapp.comprandoencasa.model.domain.User;
 
 public class UserBuilder {
 

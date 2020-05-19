@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.persistence;
+package unq.dapp.comprandoencasa.persistence;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

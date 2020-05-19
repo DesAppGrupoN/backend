@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain;
+package unq.dapp.comprandoencasa.model.domain;
 
 import java.time.LocalDate;
 import java.util.HashMap;

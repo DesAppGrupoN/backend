@@ -1,7 +1,7 @@
-package unq.dapp.comprandoEnCasa.services.commerce;
+package unq.dapp.comprandoencasa.services.commerce;
 
 
-import unq.dapp.comprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.comprandoencasa.model.domain.commerce.Commerce;
 import java.util.List;
 
 public interface CommerceService {

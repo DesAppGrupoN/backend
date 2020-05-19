@@ -1,7 +1,7 @@
-package unq.dapp.comprandoEnCasa.model.domain.commerce;
+package unq.dapp.comprandoencasa.model.domain.commerce;
 
 
-import unq.dapp.comprandoEnCasa.model.domain.Turn;
+import unq.dapp.comprandoencasa.model.domain.Turn;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

@@ -1,9 +1,9 @@
-package unq.dapp.comprandoEnCasa.model.domain;
+package unq.dapp.comprandoencasa.model.domain;
 
 
 import org.junit.jupiter.api.Test;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.AttentionSchedule;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.OpeningTime;
+import unq.dapp.comprandoencasa.model.domain.commerce.AttentionSchedule;
+import unq.dapp.comprandoencasa.model.domain.commerce.OpeningTime;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

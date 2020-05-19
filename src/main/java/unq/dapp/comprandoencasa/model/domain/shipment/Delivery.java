@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain.shipment;
+package unq.dapp.comprandoencasa.model.domain.shipment;
 
 import java.time.LocalDate;
 

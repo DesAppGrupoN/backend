@@ -1,7 +1,7 @@
-package unq.dapp.comprandoEnCasa.model.domain.shipment;
+package unq.dapp.comprandoencasa.model.domain.shipment;
 
 
-import unq.dapp.comprandoEnCasa.model.domain.Turn;
+import unq.dapp.comprandoencasa.model.domain.Turn;
 
 public class OnSite extends ShipmentType {
 

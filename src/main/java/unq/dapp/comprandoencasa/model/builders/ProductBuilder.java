@@ -1,8 +1,8 @@
-package unq.dapp.comprandoEnCasa.model.builders;
+package unq.dapp.comprandoencasa.model.builders;
 
 
-import unq.dapp.comprandoEnCasa.model.domain.Category;
-import unq.dapp.comprandoEnCasa.model.domain.Product;
+import unq.dapp.comprandoencasa.model.domain.Category;
+import unq.dapp.comprandoencasa.model.domain.Product;
 
 public class ProductBuilder {
 

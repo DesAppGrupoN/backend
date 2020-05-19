@@ -1,4 +1,4 @@
-package unq.dapp.comprandoEnCasa.model.domain;
+package unq.dapp.comprandoencasa.model.domain;
 
 public enum Category {
     LIMPIEZA,

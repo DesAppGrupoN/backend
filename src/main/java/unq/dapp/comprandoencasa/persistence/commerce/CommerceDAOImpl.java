@@ -1,10 +1,10 @@
-package unq.dapp.comprandoEnCasa.persistence.commerce;
+package unq.dapp.comprandoencasa.persistence.commerce;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import unq.dapp.comprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.comprandoencasa.model.domain.commerce.Commerce;
 
 import javax.persistence.EntityManager;
 import java.util.List;
