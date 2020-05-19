@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>unq.dapp</groupId>
-	<artifactId>comprandoencasa</artifactId>
+	<artifactId>ComprandoEnCasa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>comprandoencasa</name>
+	<name>ComprandoEnCasa</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
