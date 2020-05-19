@@ -9,13 +9,13 @@ import java.time.LocalDate;
 
 public class PurchaseOrderBuilder {
 
-    public static PurchaseOrderBuilder aPurchaseOrder() {
-        return new PurchaseOrderBuilder();
-    }
-
     private ShoppingCart shoppingCart ;
     private ShipmentType shipmentType;
     private LocalDate date;
+
+    public static PurchaseOrderBuilder aPurchaseOrder() {
+        return new PurchaseOrderBuilder();
+    }
 
     public PurchaseOrderBuilder(){
         this.shoppingCart = new ShoppingCart();

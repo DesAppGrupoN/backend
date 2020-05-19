@@ -6,16 +6,16 @@ import unq.dapp.ComprandoEnCasa.model.domain.User;
 
 public class UserBuilder {
 
-    public static UserBuilder aUser() {
-        return new UserBuilder();
-    }
-
     private String username;
     private String password;
     private String email;
     private String name;
     private String lastName;
     private ShoppingCart shoppingCart;
+
+    public static UserBuilder aUser() {
+        return new UserBuilder();
+    }
 
     public UserBuilder(){
 

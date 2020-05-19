@@ -6,16 +6,16 @@ import unq.dapp.ComprandoEnCasa.model.domain.Product;
 
 public class ProductBuilder {
 
-    public static ProductBuilder aProduct() {
-        return new ProductBuilder();
-    }
-
     private String name ;
     private Category category ;
     private String brand ;
     private Integer stock ;
     private Integer price ;
     private String image ;
+
+    public static ProductBuilder aProduct() {
+        return new ProductBuilder();
+    }
 
     public ProductBuilder(){
         this.name = "not name";

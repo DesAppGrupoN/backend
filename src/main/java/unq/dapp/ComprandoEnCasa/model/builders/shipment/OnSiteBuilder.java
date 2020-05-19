@@ -6,11 +6,11 @@ import unq.dapp.ComprandoEnCasa.model.domain.shipment.OnSite;
 
 public class OnSiteBuilder {
 
+    private Turn turn = new Turn();
+
     public static OnSiteBuilder anOnSite() {
         return new OnSiteBuilder();
     }
-
-    private Turn turn = new Turn();
 
     public OnSite build() {
         OnSite onSite = new OnSite();

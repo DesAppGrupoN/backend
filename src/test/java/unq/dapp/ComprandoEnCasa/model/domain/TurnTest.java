@@ -9,7 +9,7 @@ import static org.mockito.Mockito.mock;
 public class TurnTest {
 
     @Test
-    public void TurnTest() {
+    public void TimeAndUserTest() {
         LocalTime time = LocalTime.of(9, 00);
         User user = mock(User.class);
         Turn turn = new Turn();

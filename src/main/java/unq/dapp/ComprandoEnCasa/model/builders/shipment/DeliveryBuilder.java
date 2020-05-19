@@ -7,13 +7,13 @@ import java.time.LocalDate;
 
 public class DeliveryBuilder {
 
-    public static DeliveryBuilder aDelivery() {
-        return new DeliveryBuilder();
-    }
-
     private String shippingAddress = "any address";
     private Integer distance = 0;
     private LocalDate shippingDate = LocalDate.MIN;
+
+    public static DeliveryBuilder aDelivery() {
+        return new DeliveryBuilder();
+    }
 
     public Delivery build() {
         Delivery delivery = new Delivery();

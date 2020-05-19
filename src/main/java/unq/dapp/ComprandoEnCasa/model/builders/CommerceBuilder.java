@@ -12,15 +12,15 @@ import java.util.List;
 
 public class CommerceBuilder {
 
-    public static CommerceBuilder aCommerce() {
-        return new CommerceBuilder();
-    }
-
     private Sector sector;
     private String address;
     private List<PayMethods> payMethods;
     private Integer maxDistance;
     private AttentionSchedule attentionSchedule;
+
+    public static CommerceBuilder aCommerce() {
+        return new CommerceBuilder();
+    }
 
     public  CommerceBuilder(){
         this.sector = Sector.FOOD;
