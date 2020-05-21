@@ -50,14 +50,10 @@ public class InitServiceInMemory {
 		Commerce commerce2 = new Commerce(sector2, address2, payMethods2,maxDistance2, attentionSchedule2);
 
 		//Add commerce
-		try {
-			Thread.sleep(5000);
-			commerceService.save(commerce);
-			commerceService.save(commerce2);
-		}
-		catch (Exception e) {
-			System.out.println("asd");
-		}
+
+		commerceService.save(commerce);
+		commerceService.save(commerce2);
+
 
 	}
 }
