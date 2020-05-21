@@ -6,6 +6,7 @@ import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.services.commerce.CommerceService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/commerce")
@@ -20,7 +21,7 @@ public class CommerceController {
     }
 
     @RequestMapping(value="/get/{commerceId}", method= RequestMethod.GET)
-    public Commerce findById(@PathVariable int commerceId){
+    public Optional findById(@PathVariable int commerceId){
         return commerceService.findById(commerceId);
     }
 

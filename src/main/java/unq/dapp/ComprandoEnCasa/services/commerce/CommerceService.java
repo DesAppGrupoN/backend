@@ -1,17 +1,39 @@
 package unq.dapp.ComprandoEnCasa.services.commerce;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.ComprandoEnCasa.persistence.commerce.CommerceRepository;
+
 import java.util.List;
+import java.util.Optional;
 
-public interface CommerceService {
+@Service
+public class CommerceService {
 
-    public List<Commerce> findAll();
+    @Autowired
+    private CommerceRepository repository;
 
-    public Commerce findById(int id);
+    @Transactional
+    public List<Commerce> findAll() {
+        return repository.findAll();
+    }
 
-    public void save(Commerce commerce);
+    @Transactional
+    public Optional findById(int id) {
+        return repository.findById(id);
+    }
 
-    public void deleteById(int id);
+
+   @Transactional
+    public void save(Commerce commerce) {
+        this.repository.save(commerce);
+    }
+
+    @Transactional
+    public void deleteById(int id) {
+        repository.deleteById(id);
+    }
 
 }
