@@ -11,14 +11,18 @@ public class Commerce {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Transient
+    @Enumerated(EnumType.STRING)
     private Sector sector;
-    @Transient
+
     private String address;
-    @Transient
+
+    @ElementCollection(targetClass = PayMethods.class)
+    @CollectionTable
+    @Enumerated(EnumType.STRING)
     private List<PayMethods> payMethods;
-    @Transient
+
     private Integer maxDistance;
+
     @Transient
     private AttentionSchedule attentionSchedule;
 
