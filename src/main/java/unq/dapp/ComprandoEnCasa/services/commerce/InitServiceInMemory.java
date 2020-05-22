@@ -51,8 +51,8 @@ public class InitServiceInMemory {
 
 		//Add commerce
 
-		commerceService.save(commerce);
-		commerceService.save(commerce2);
+		//commerceService.save(commerce);
+		//commerceService.save(commerce2);
 
 
 	}
