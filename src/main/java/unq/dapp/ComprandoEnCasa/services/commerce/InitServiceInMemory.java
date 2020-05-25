@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import unq.dapp.ComprandoEnCasa.model.domain.User;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.AttentionSchedule;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.PayMethods;
@@ -26,7 +27,8 @@ public class InitServiceInMemory {
 
 	@Autowired
 	private CommerceService commerceService;
-
+	@Autowired
+	private UserService userService;
 	@PostConstruct
 	public void initialize() {
 			fireInitialData();
@@ -58,6 +60,24 @@ public class InitServiceInMemory {
 		commerceService.save(commerce);
 		commerceService.save(commerce2);
 
+		//User1
 
+		String username1 = "userName1";
+		String password1 = "password1";
+		String email1 = "user1@gmail.com";
+		String name1 = "userName1";
+		String lastName1 = "userLastName1";
+		User user1 = new User(username1,password1,email1,name1,lastName1);
+
+		//User2
+		String username2 = "userName2";
+		String password2 = "password2";
+		String email2 = "user2@gmail.com";
+		String name2 = "userName2";
+		String lastName2 = "userLastName2";
+		User user2 = new User (username2,password2,email2,name2,lastName2);
+
+		userService.save(user1);
+		userService.save(user2);
 	}
 }

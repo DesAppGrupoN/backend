@@ -1,17 +1,22 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+@Entity
 public class User {
 
+    @Id
     private String username;
     private String password;
     private String email;
     private String name;
     private String lastName;
+    @Transient
     private ShoppingCart shoppingCart;
+    @Transient
     private Map<LocalDate,ShoppingCart> purchaseHistory;
     private boolean statusNotifications;
 
