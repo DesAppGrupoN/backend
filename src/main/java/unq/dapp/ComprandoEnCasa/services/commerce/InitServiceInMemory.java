@@ -3,6 +3,7 @@ package unq.dapp.ComprandoEnCasa.services.commerce;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,9 @@ import java.util.List;
 @Service
 @Transactional
 public class InitServiceInMemory {
+
+    @Value("${pring.datasource.driverClassName:NONE}")
+    private String className;
 
 	@Autowired
 	private CommerceService commerceService;
