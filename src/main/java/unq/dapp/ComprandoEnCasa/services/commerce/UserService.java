@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import unq.dapp.ComprandoEnCasa.model.domain.User;
+import unq.dapp.ComprandoEnCasa.model.exceptions.InvalidUsernameOrPasswordException;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.UserRepository;
 
 import java.util.List;
@@ -26,15 +27,13 @@ public class UserService {
     }
 
     @Transactional
-    public static User getUserByUsernameAndPassword(String username,String password , List<User> users){
-        User res = null;
-        for (User user: users){
-            if(user.getUsername().equals(username)&& user.getPassword().equals(password)){
-                res = user ;
-            }
-        }
-        return res;
+    public User getUserByUsernameAndPassword(User user){
+        return this.findAll().stream()
+                .filter(it -> it.getUsername().equals(user.getUsername()) && it.getPassword().equals(user.getPassword()) )
+                .findFirst()
+                .orElseThrow(InvalidUsernameOrPasswordException::new);
     }
+
     @Transactional
     public void save(User user) {
         this.repository.save(user);

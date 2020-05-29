@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
 
@@ -29,9 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void addClient(@RequestBody User user) {
-        userService.save(user);
-    }
+    public void addClient(@RequestBody User user) { userService.save(user); }
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
     public void delete(@PathVariable int userId) {
@@ -39,9 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestParam String username, @RequestParam String password) {
-        List<User> users = userService.findAll();
-        User user = userService.getUserByUsernameAndPassword(username, password, users);
-        return ResponseEntity.ok().body(user);
+    public ResponseEntity<?> loginUser(@RequestBody User user) {
+        return ResponseEntity.ok().body(userService.getUserByUsernameAndPassword(user));
     }
 }

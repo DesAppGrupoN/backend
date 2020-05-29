@@ -1,5 +1,7 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
+import unq.dapp.ComprandoEnCasa.model.exceptions.InvalidUsernameOrPasswordException;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -23,6 +25,16 @@ public class User {
     public User(){
         shoppingCart=new ShoppingCart();
         purchaseHistory= new HashMap<LocalDate, ShoppingCart>();
+        statusNotifications= true;
+    }
+
+    public User(String username, String password){
+
+        if(username.isEmpty() || password.isEmpty()){
+            throw new InvalidUsernameOrPasswordException();
+        }
+        this.username = username;
+        this.password = password;
     }
 
     public User(String username, String password, String email, String name, String lastName){
