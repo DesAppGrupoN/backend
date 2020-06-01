@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import unq.dapp.ComprandoEnCasa.model.domain.User;
+import unq.dapp.ComprandoEnCasa.model.exceptions.UsernameAlreadyExistsException;
 import unq.dapp.ComprandoEnCasa.model.exceptions.InvalidUsernameOrPasswordException;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.UserRepository;
 
@@ -22,7 +23,7 @@ public class UserService {
     }
 
     @Transactional
-    public Optional findById(int id) {
+    public Optional findById(String id) {
         return repository.findById(id);
     }
 
@@ -36,8 +37,10 @@ public class UserService {
 
     @Transactional
     public void save(User user) {
+        if (!findById(user.getUsername()).isPresent())
         this.repository.save(user);
-    }
+        else new UsernameAlreadyExistsException();
+    }g
 
     @Transactional
     public void deleteById(int id) {
