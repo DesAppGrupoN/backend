@@ -40,7 +40,7 @@ public class UserService {
         if (!findById(user.getUsername()).isPresent())
         this.repository.save(user);
         else new UsernameAlreadyExistsException();
-    }g
+    }
 
     @Transactional
     public void deleteById(int id) {
