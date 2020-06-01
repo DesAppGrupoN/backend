@@ -23,8 +23,13 @@ public class UserService {
     }
 
     @Transactional
-    public Optional findById(String id) {
+    public Optional findById(Integer id) {
         return repository.findById(id);
+    }
+
+    @Transactional
+    public Optional findByUsername(String username) {
+        return repository.findByUsername(username);
     }
 
     @Transactional
@@ -37,7 +42,7 @@ public class UserService {
 
     @Transactional
     public void save(User user) {
-        if (!findById(user.getUsername()).isPresent())
+        if (!findByUsername(user.getUsername()).isPresent())
         this.repository.save(user);
         else new UsernameAlreadyExistsException();
     }
