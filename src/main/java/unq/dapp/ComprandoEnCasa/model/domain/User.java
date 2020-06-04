@@ -17,36 +17,40 @@ public class User {
     private String name;
     private String lastName;
     @Transient
+    private SecretManager secretManager;
+    @Transient
     private ShoppingCart shoppingCart;
     @Transient
     private Map<LocalDate,ShoppingCart> purchaseHistory;
     private boolean statusNotifications;
 
     public User(){
+        this.secretManager =  new SecretManager("secreto");
         shoppingCart=new ShoppingCart();
         purchaseHistory= new HashMap<LocalDate, ShoppingCart>();
         statusNotifications= true;
     }
 
     public User(String username, String password){
-
+        this.secretManager =  new SecretManager("secreto");
         if(username.isEmpty() || password.isEmpty()){
             throw new InvalidUsernameOrPasswordException();
         }
         this.username = username;
-        this.password = password;
+        this.password = this.secretManager.encrypt(password);
     }
 
     public User(String username, String password, String email, String name, String lastName){
+        this.secretManager =  new SecretManager("secreto");
         this.username = username;
-        this.password = password;
+        this.password = this.secretManager.encrypt(password);
         this.email = email;
         this.name = name;
         this.lastName = lastName;
     }
     public String getUsername() { return username; }
 
-    public String getPassword() { return password; }
+    public String getPassword() { return this.secretManager.decrypt(this.password); }
 
     public String getEmail() { return email; }
 
@@ -56,7 +60,7 @@ public class User {
 
     public void setUsername(String username) { this.username = username; }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(String password) { this.password = this.secretManager.encrypt(password); }
 
     public void setEmail(String email) { this.email = email; }
 
