@@ -16,13 +16,13 @@ public class User {
     private String email;
     private String name;
     private String lastName;
-    @Transient
-    private SecretManager secretManager;
-    @Transient
+    @OneToOne (cascade = {CascadeType.ALL})
     private ShoppingCart shoppingCart;
-    @Transient
+    @ElementCollection
     private Map<LocalDate,ShoppingCart> purchaseHistory;
     private boolean statusNotifications;
+    @Transient
+    private SecretManager secretManager;
 
     public User(){
         this.secretManager =  new SecretManager("secreto");

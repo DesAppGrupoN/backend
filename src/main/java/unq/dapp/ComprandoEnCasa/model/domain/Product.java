@@ -1,12 +1,14 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Product {
     private String commerceId;
     @Id
+    @GeneratedValue
     private Integer id;
     private String name;
     private Category category;

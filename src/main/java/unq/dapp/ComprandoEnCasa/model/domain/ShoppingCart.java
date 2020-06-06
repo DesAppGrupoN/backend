@@ -1,10 +1,15 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
+import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
-
+@Entity
 public class ShoppingCart {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
+    @ElementCollection
     private Map<Product,Integer> cart ;
 
     public ShoppingCart(){ this.cart=new HashMap<Product, Integer>();}
