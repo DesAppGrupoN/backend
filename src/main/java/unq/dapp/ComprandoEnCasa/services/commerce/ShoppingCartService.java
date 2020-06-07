@@ -3,6 +3,7 @@ package unq.dapp.ComprandoEnCasa.services.commerce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.ShoppingCartRepository;
 
@@ -24,6 +25,16 @@ public class ShoppingCartService {
     @Transactional
     public void save(ShoppingCart shoppingCart) {
         this.repository.save(shoppingCart);
+    }
+
+    @Transactional
+    public void addProduct(Product product,Integer count,Integer id) {
+        Optional<ShoppingCart> shoppingCart = repository.findById(id);
+        if (shoppingCart.isPresent()){
+            shoppingCart.get().addItem(product,count);
+            this.repository.save(shoppingCart.get());
+        }
+
     }
 
     @Transactional
