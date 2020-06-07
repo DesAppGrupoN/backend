@@ -3,9 +3,11 @@ package unq.dapp.ComprandoEnCasa.model.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Product {
+    @JoinColumn(name="commerce_id")
     private String commerceId;
     @Id
     @GeneratedValue
@@ -19,9 +21,8 @@ public class Product {
 
     public Product() { }
 
-    public Product(String commerceId,Integer id,String name, Category category, String brand, Integer stock, Integer price, String image){
+    public Product(String commerceId,String name, Category category, String brand, Integer stock, Integer price, String image){
         this.commerceId = commerceId;
-        this.id = id;
         this.name = name;
         this.category = category;
         this.brand = brand;

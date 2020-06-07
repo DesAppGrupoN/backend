@@ -10,7 +10,6 @@ public class ProductTest {
     @Test
     public void constructorTest() {
         String commerceId= "commerceId";
-        Integer id= 1;
         String name = "name";
         Category category= LIMPIEZA;
         String brand = "brand";
@@ -19,10 +18,9 @@ public class ProductTest {
         String image = "image";
 
 
-        Product product = new Product(commerceId,id,name, category, brand, stock, price, image);
+        Product product = new Product(commerceId,name, category, brand, stock, price, image);
 
         assertEquals(commerceId,product.getCommerceId());
-        assertEquals(id,product.getId());
         assertEquals(name,product.getName());
         assertEquals(category,product.getCategory());
         assertEquals(brand,product.getBrand());

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import unq.dapp.ComprandoEnCasa.model.domain.Category;
+import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.model.domain.User;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.AttentionSchedule;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
@@ -29,6 +31,8 @@ public class InitServiceInMemory {
 	private CommerceService commerceService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ProductService productService;
 	@PostConstruct
 	public void initialize() {
 			fireInitialData();
@@ -79,5 +83,31 @@ public class InitServiceInMemory {
 
 		userService.save(user1);
 		userService.save(user2);
+
+		//Product1
+		String productName1 = "Sprite 3L";
+		Category productCategory1 = Category.BEBIBAS;
+		String productBrand1 = "The Coca-Cola Company";
+		Integer productStock1 = 4;
+		Integer productPrice1 = 100;
+		String productImage1 = "https://supermercado.carrefour.com.ar/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/7/7/7790895064128_02.jpg";
+		Product product1= new Product("1",productName1,productCategory1,productBrand1,productStock1,productPrice1,productImage1);
+
+		//Product2
+		String productName2 = "CocaCola 3L";
+		Category productCategory2 = Category.BEBIBAS;
+		String productBrand2 = "The Coca-Cola Company";
+		Integer productStock2 = 4;
+		Integer productPrice2 = 100;
+		String productImage2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
+		Product product2= new Product("1",productName2,productCategory2,productBrand2,productStock2,productPrice2,productImage2);
+
+		//Product3
+
+		Product product3= new Product("2",productName2,productCategory2,productBrand2,productStock2,productPrice2,productImage2);
+
+		productService.save(product1);
+		productService.save(product2);
+		productService.save(product3);
 	}
 }

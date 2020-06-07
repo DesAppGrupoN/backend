@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void addClient(@RequestBody User user) { userService.save(user); }
+    public void addUser(@RequestBody User user) { userService.save(user); }
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
     public void delete(@PathVariable int userId) {
