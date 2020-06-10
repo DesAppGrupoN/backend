@@ -11,6 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 public class CommerceBuilderTest {
+    @Test
+    public void buildCommerceWithName() {
+        String name = "name";
+        Commerce commerce = CommerceBuilder.aCommerce().withName(name).build();
+
+        assertEquals(name, commerce.getName());
+    }
+
+    @Test
+    public void buildCommerceWithDescription() {
+        String description = "description";
+        Commerce commerce = CommerceBuilder.aCommerce().withName(description).build();
+
+        assertEquals(description, commerce.getDescription());
+    }
 
     @Test
     public void buildCommerceWithSector() {
@@ -26,6 +41,14 @@ public class CommerceBuilderTest {
         Commerce commerce = CommerceBuilder.aCommerce().withAddress(address).build();
 
         assertEquals(address, commerce.getAddress());
+    }
+
+    @Test
+    public void buildCommerceWithImage() {
+        String imageUrl = "imageUrl";
+        Commerce commerce = CommerceBuilder.aCommerce().withImage(imageUrl).build();
+
+        assertEquals(imageUrl, commerce.getImage());
     }
 
     @Test

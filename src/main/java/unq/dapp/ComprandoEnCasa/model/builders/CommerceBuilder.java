@@ -12,8 +12,11 @@ import java.util.List;
 
 public class CommerceBuilder {
 
+    private String name;
+    private String description;
     private Sector sector;
     private String address;
+    private String image;
     private List<PayMethods> payMethods;
     private Integer maxDistance;
     private AttentionSchedule attentionSchedule;
@@ -23,8 +26,11 @@ public class CommerceBuilder {
     }
 
     public  CommerceBuilder(){
+        this.name = "name";
+        this.description = "description";
         this.sector = Sector.FOOD;
         this.address = "no address";
+        this.image = "urlImage";
         this.payMethods = new ArrayList<PayMethods>();
         this.maxDistance = 0;
         this.attentionSchedule = new AttentionSchedule();
@@ -32,14 +38,26 @@ public class CommerceBuilder {
     }
     public Commerce build() {
         Commerce commerce = new Commerce();
+        commerce.setName(this.name);
+        commerce.setDescription(this.description);
         commerce.setSector(this.sector);
         commerce.setAddress(this.address);
+        commerce.setImage(this.image);
         commerce.setPayMethods(this.payMethods);
         commerce.setMaxDistance(this.maxDistance);
         commerce.setAttentionSchedule(this.attentionSchedule);
         return commerce;
     }
 
+    public CommerceBuilder withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public CommerceBuilder withDescription(String description) {
+        this.description = description;
+        return this;
+    }
     public CommerceBuilder withSector(Sector sector) {
         this.sector = sector;
         return this;
@@ -47,6 +65,10 @@ public class CommerceBuilder {
 
     public CommerceBuilder withAddress(String address) {
         this.address = address;
+        return this;
+    }
+    public CommerceBuilder withImage(String imageUrl) {
+        this.image = imageUrl;
         return this;
     }
 

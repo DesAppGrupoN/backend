@@ -12,16 +12,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CommerceTest {
     @Test
     public void constructorTest() {
+        String name = "CommerceName";
+        String description = "CommerceDescription";
         Sector sector = Sector.FOOD;
         String address = "address";
+        String image = "image";
         ArrayList<PayMethods> payMethods = new ArrayList<PayMethods>();
         Integer maxDistance = 100;
         AttentionSchedule attentionSchedule = new AttentionSchedule();
 
-        Commerce commerce = new Commerce(sector, address, payMethods, maxDistance, attentionSchedule);
+        Commerce commerce = new Commerce(name,description,sector, address,image, payMethods, maxDistance, attentionSchedule);
 
+        assertEquals(name, commerce.getName());
+        assertEquals(description, commerce.getDescription());
         assertEquals(sector, commerce.getSector());
         assertEquals(address, commerce.getAddress());
+        assertEquals(image, commerce.getImage());
         assertEquals(payMethods, commerce.getPayMethods());
         assertEquals(maxDistance, commerce.getMaxDistance());
         assertEquals(attentionSchedule, commerce.getAttentionSchedule());

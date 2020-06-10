@@ -11,10 +11,16 @@ public class Commerce {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private  String name;
+
+    private  String description;
+
     @Enumerated(EnumType.STRING)
     private Sector sector;
 
     private String address;
+
+    private String image ;
 
     @ElementCollection(targetClass = PayMethods.class)
     @CollectionTable
@@ -28,13 +34,27 @@ public class Commerce {
 
     public Commerce() { }
 
-    public Commerce(Sector sector, String address, List<PayMethods> payMethods, Integer maxDistance, AttentionSchedule attentionSchedule) {
+    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance, AttentionSchedule attentionSchedule) {
+        this.name = name;
+        this.description = description;
         this.sector = sector;
         this.address = address;
+        this.image = image ;
         this.payMethods = payMethods;
         this.maxDistance = maxDistance;
         this.attentionSchedule = attentionSchedule;
     }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
 
     public Sector getSector() {
         return this.sector;
@@ -51,6 +71,10 @@ public class Commerce {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getImage() { return image; }
+
+    public void setImage(String image) { this.image = image; }
 
     public List<PayMethods> getPayMethods() {
         return this.payMethods;

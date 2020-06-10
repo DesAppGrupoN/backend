@@ -41,71 +41,81 @@ public class InitServiceInMemory {
 
 	private void fireInitialData() {
 		//Commerce1
-		Sector sector =(Sector.FARMACY);
-		String address = "Av.Callo 110";
-		List<PayMethods> payMethods = new ArrayList<PayMethods>();
-		payMethods.add(PayMethods.CASH);
-		Integer maxDistance = 100 ;
-		AttentionSchedule attentionSchedule = new AttentionSchedule();
-		Commerce commerce = new Commerce(sector, address, payMethods,maxDistance, attentionSchedule);
+		String nameCommerce = "Soy tu Farmacia";
+		String descriptionCommerce = "Red de servicios de atención farmacéutica y perfumerías.";
+		Sector sectorCommerce =(Sector.FARMACY);
+		String addressCommerce = "Av.Callo 110";
+		String imageCommerce = "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp";
+		List<PayMethods> payMethodsCommerce = new ArrayList<PayMethods>();
+		payMethodsCommerce.add(PayMethods.CASH);
+		Integer maxDistanceCommerce = 100 ;
+		AttentionSchedule attentionScheduleCommerce = new AttentionSchedule();
+		Commerce commerce1 = new Commerce(nameCommerce,descriptionCommerce,sectorCommerce, addressCommerce,imageCommerce, payMethodsCommerce,maxDistanceCommerce, attentionScheduleCommerce);
 
 		//Commerce2
-		Sector sector2 =(Sector.FOOD);
-		String address2 = "Av.Mitre 550";
-		List<PayMethods> payMethods2 = new ArrayList<PayMethods>();
-		payMethods2.add(PayMethods.CREDIT_CARD);
-		payMethods2.add(PayMethods.CASH);
-		Integer maxDistance2 = 300;
-		AttentionSchedule attentionSchedule2 = new AttentionSchedule();
-		Commerce commerce2 = new Commerce(sector2, address2, payMethods2,maxDistance2, attentionSchedule2);
+		String nameCommerce2 = "Ringo";
+		String descriptionCommerce2 = "Delicious Food Express";
+		Sector sectorCommerce2 =(Sector.FOOD);
+		String addressCommerce2 = "Av.Mitre 550";
+		String imageCommerce2 = "https://i.pinimg.com/originals/0b/8a/0d/0b8a0dafba62324247e9febcd7083874.jpg";
+		List<PayMethods> payMethodsCommerce2 = new ArrayList<PayMethods>();
+		payMethodsCommerce2.add(PayMethods.CREDIT_CARD);
+		payMethodsCommerce2.add(PayMethods.CASH);
+		Integer maxDistanceCommerce2 = 300;
+		AttentionSchedule attentionScheduleCommerce2 = new AttentionSchedule();
 
-		//Add commerce
+		Commerce commerce2 = new Commerce(nameCommerce2,descriptionCommerce2,sectorCommerce2, addressCommerce2,imageCommerce2, payMethodsCommerce2,maxDistanceCommerce2, attentionScheduleCommerce2);
 
-		commerceService.save(commerce);
+		//Add commerces
+
+		commerceService.save(commerce1);
 		commerceService.save(commerce2);
 
 		//User1
 
-		String username1 = "userName1";
-		String password1 = "password1";
-		String email1 = "user1@gmail.com";
-		String name1 = "userName1";
-		String lastName1 = "userLastName1";
-		User user1 = new User(username1,password1,email1,name1,lastName1);
+		String usernameUser1 = "userName1";
+		String passwordUser1 = "password1";
+		String emailUser1 = "user1@gmail.com";
+		String nameUser1 = "userName1";
+		String lastNameUser1 = "userLastName1";
+		User user1 = new User(usernameUser1,passwordUser1,emailUser1,nameUser1,lastNameUser1);
 
 		//User2
-		String username2 = "userName2";
-		String password2 = "password2";
-		String email2 = "user2@gmail.com";
-		String name2 = "userName2";
-		String lastName2 = "userLastName2";
-		User user2 = new User (username2,password2,email2,name2,lastName2);
+		String usernameUser2 = "userName2";
+		String passwordUser2 = "password2";
+		String emailUser2 = "user2@gmail.com";
+		String nameUserUser2 = "userName2";
+		String lastNameUser2 = "userLastName2";
+		User user2 = new User (usernameUser2,passwordUser2,emailUser2,nameUserUser2,lastNameUser2);
 
+		//Add users
 		userService.save(user1);
 		userService.save(user2);
 
 		//Product1
-		String productName1 = "Sprite 3L";
-		Category productCategory1 = Category.BEBIBAS;
-		String productBrand1 = "The Coca-Cola Company";
-		Integer productStock1 = 4;
-		Integer productPrice1 = 100;
-		String productImage1 = "https://supermercado.carrefour.com.ar/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/7/7/7790895064128_02.jpg";
-		Product product1= new Product("1",productName1,productCategory1,productBrand1,productStock1,productPrice1,productImage1);
+		String nameProduct1 = "Sprite 3L";
+		Category categoryProduct1 = Category.BEBIBAS;
+		String brandProduct1 = "The Coca-Cola Company";
+		Integer stockProduct1 = 1;
+		Integer priceProduct1 = 120;
+		String imageProduct1 = "https://supermercado.carrefour.com.ar/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/7/7/7790895064128_02.jpg";
+		Product product1= new Product("1",nameProduct1,categoryProduct1,brandProduct1,stockProduct1,priceProduct1,imageProduct1);
 
 		//Product2
-		String productName2 = "CocaCola 3L";
-		Category productCategory2 = Category.BEBIBAS;
-		String productBrand2 = "The Coca-Cola Company";
-		Integer productStock2 = 4;
-		Integer productPrice2 = 100;
-		String productImage2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
-		Product product2= new Product("1",productName2,productCategory2,productBrand2,productStock2,productPrice2,productImage2);
+		String nameProduct2 = "CocaCola 3L";
+		Category categoryProduct2 = Category.BEBIBAS;
+		String brandProduct2 = "The Coca-Cola Company";
+		Integer stockProduct2 = 4;
+		Integer priceProduct2 = 100;
+		String imageProduct2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
+		Product product2= new Product("1",nameProduct2,categoryProduct2,brandProduct2,stockProduct2,priceProduct2,imageProduct2);
 
 		//Product3
+		Integer stockProduct3 = 5 ;
+		Integer priceProduct3 = 150;
+		Product product3= new Product("2",nameProduct2,categoryProduct2,brandProduct2,stockProduct3,priceProduct3,imageProduct2);
 
-		Product product3= new Product("2",productName2,productCategory2,productBrand2,productStock2,productPrice2,productImage2);
-
+		//Add products
 		productService.save(product1);
 		productService.save(product2);
 		productService.save(product3);
