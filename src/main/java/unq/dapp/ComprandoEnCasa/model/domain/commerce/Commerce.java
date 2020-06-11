@@ -11,9 +11,9 @@ public class Commerce {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private  String name;
+    private String name;
 
-    private  String description;
+    private String description;
 
     @Enumerated(EnumType.STRING)
     private Sector sector;
