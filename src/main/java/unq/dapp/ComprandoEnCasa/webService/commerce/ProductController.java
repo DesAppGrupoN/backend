@@ -26,7 +26,7 @@ public class ProductController {
         return ResponseEntity.ok().body(productsList);
     }
 
-    @RequestMapping(value = "/get/{productId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/by_id/{productId}", method = RequestMethod.GET)
     public ResponseEntity<?> findById(@PathVariable int productId) {
         Optional product = productService.findById(productId);
         return ResponseEntity.ok().body(product);
@@ -38,6 +38,12 @@ public class ProductController {
     @RequestMapping(value = "/delete/{productId}", method = RequestMethod.GET)
     public void delete(@PathVariable int productId) {
         productService.deleteById(productId);
+    }
+
+    @RequestMapping(value = "/get/by_commerce_id/{commerceId}", method = RequestMethod.GET)
+    public ResponseEntity<?> findByCommerceId(@PathVariable int commerceId) {
+        List<Product> productList = productService.getAllByCommerceId(commerceId);
+        return ResponseEntity.ok().body(productList);
     }
 
 }

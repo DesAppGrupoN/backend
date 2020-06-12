@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 @Entity
 public class Product {
     @JoinColumn(name="commerce_id")
-    private String commerceId;
+    private Integer commerceId;
     @Id
     @GeneratedValue
     private Integer id;
@@ -21,7 +21,7 @@ public class Product {
 
     public Product() { }
 
-    public Product(String commerceId,String name, Category category, String brand, Integer stock, Integer price, String image){
+    public Product(Integer commerceId, String name, Category category, String brand, Integer stock, Integer price, String image){
         this.commerceId = commerceId;
         this.name = name;
         this.category = category;
@@ -57,6 +57,6 @@ public class Product {
 
     public Integer getId() { return id; }
 
-    public String getCommerceId() { return commerceId; }
+    public Integer getCommerceId() { return commerceId; }
 
 }

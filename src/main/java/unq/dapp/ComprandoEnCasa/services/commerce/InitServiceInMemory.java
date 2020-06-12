@@ -99,7 +99,7 @@ public class InitServiceInMemory {
 		Integer stockProduct1 = 1;
 		Integer priceProduct1 = 120;
 		String imageProduct1 = "https://supermercado.carrefour.com.ar/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/7/7/7790895064128_02.jpg";
-		Product product1= new Product("1",nameProduct1,categoryProduct1,brandProduct1,stockProduct1,priceProduct1,imageProduct1);
+		Product product1= new Product(1,nameProduct1,categoryProduct1,brandProduct1,stockProduct1,priceProduct1,imageProduct1);
 
 		//Product2
 		String nameProduct2 = "CocaCola 3L";
@@ -108,12 +108,12 @@ public class InitServiceInMemory {
 		Integer stockProduct2 = 4;
 		Integer priceProduct2 = 100;
 		String imageProduct2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
-		Product product2= new Product("1",nameProduct2,categoryProduct2,brandProduct2,stockProduct2,priceProduct2,imageProduct2);
+		Product product2= new Product(1,nameProduct2,categoryProduct2,brandProduct2,stockProduct2,priceProduct2,imageProduct2);
 
 		//Product3
 		Integer stockProduct3 = 5 ;
 		Integer priceProduct3 = 150;
-		Product product3= new Product("2",nameProduct2,categoryProduct2,brandProduct2,stockProduct3,priceProduct3,imageProduct2);
+		Product product3= new Product(2,nameProduct2,categoryProduct2,brandProduct2,stockProduct3,priceProduct3,imageProduct2);
 
 		//Add products
 		productService.save(product1);

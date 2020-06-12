@@ -9,7 +9,7 @@ public class ProductTest {
 
     @Test
     public void constructorTest() {
-        String commerceId= "commerceId";
+        Integer commerceId = 1;
         String name = "name";
         Category category= LIMPIEZA;
         String brand = "brand";

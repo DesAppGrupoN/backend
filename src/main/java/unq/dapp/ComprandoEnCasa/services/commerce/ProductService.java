@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
-import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.ProductRepository;
 
 import java.util.List;
@@ -30,6 +29,11 @@ public class ProductService {
     @Transactional
     public void deleteById(int id) {
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public List<Product> getAllByCommerceId(int id) {
+        return repository.findByCommerceId(id);
     }
 
 }
