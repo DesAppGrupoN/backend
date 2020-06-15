@@ -29,11 +29,9 @@ public class CommerceController {
         return ResponseEntity.ok().body(commerce);
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public void save() {
-        Commerce commerce = new Commerce();
-        commerceService.save(commerce);
-    }
+    @PostMapping("/add")
+    public void addCommerce(@RequestBody Commerce commerce) { commerceService.save(commerce); }
+
 
     @RequestMapping(value = "/delete/{commerceId}", method = RequestMethod.GET)
     public void delete(@PathVariable int commerceId) {

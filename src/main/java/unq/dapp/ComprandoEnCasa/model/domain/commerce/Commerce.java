@@ -8,7 +8,7 @@ import java.util.List;
 public class Commerce {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
 
     private String name;
@@ -95,6 +95,8 @@ public class Commerce {
     public AttentionSchedule getAttentionSchedule() {
         return this.attentionSchedule;
     }
+
+    public Integer getId() { return id; }
 
     public void setAttentionSchedule(AttentionSchedule attentionSchedule) {
         this.attentionSchedule = attentionSchedule;
