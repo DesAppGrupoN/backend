@@ -3,7 +3,7 @@ package unq.dapp.ComprandoEnCasa.model.domain;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static unq.dapp.ComprandoEnCasa.model.domain.Category.LIMPIEZA;
+import static unq.dapp.ComprandoEnCasa.model.domain.Category.CLEANING;
 
 public class ProductTest {
 
@@ -11,7 +11,7 @@ public class ProductTest {
     public void constructorTest() {
         Integer commerceId = 1;
         String name = "name";
-        Category category= LIMPIEZA;
+        Category category = CLEANING;
         String brand = "brand";
         Integer stock= 10;
         Integer price = 50;

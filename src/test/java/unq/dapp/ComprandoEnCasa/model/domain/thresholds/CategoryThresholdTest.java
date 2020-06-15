@@ -10,7 +10,7 @@ public class CategoryThresholdTest {
 
     @Test
     public void setAndGetCategory() {
-        Category category = Category.LIMPIEZA;
+        Category category = Category.CLEANING;
         CategoryThreshold categoryThreshold = new CategoryThreshold();
         categoryThreshold.setCategory(category);
         assertEquals(category, categoryThreshold.getCategory());

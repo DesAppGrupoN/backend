@@ -45,7 +45,7 @@ public class ProductsBuilderTest {
     }
     @Test
     public void buildProductWithCategory() {
-        Category category= Category.LIMPIEZA;
+        Category category= Category.CLEANING;
         Product product = ProductBuilder.aProduct().withCategory(category).build();
 
         assertEquals(category, product.getCategory());

@@ -94,7 +94,7 @@ public class InitServiceInMemory {
 
 		//Product1
 		String nameProduct1 = "Sprite 3L";
-		Category categoryProduct1 = Category.BEBIBAS;
+		Category categoryProduct1 = Category.DRINK;
 		String brandProduct1 = "The Coca-Cola Company";
 		Integer stockProduct1 = 1;
 		Integer priceProduct1 = 120;
@@ -103,7 +103,7 @@ public class InitServiceInMemory {
 
 		//Product2
 		String nameProduct2 = "CocaCola 3L";
-		Category categoryProduct2 = Category.BEBIBAS;
+		Category categoryProduct2 = Category.DRINK;
 		String brandProduct2 = "The Coca-Cola Company";
 		Integer stockProduct2 = 4;
 		Integer priceProduct2 = 100;

@@ -36,9 +36,16 @@ public class CommerceController {
         commerceService.deleteById(commerceId);
     }
 
-    @RequestMapping(value ="/get_categories", method = RequestMethod.GET)
-    public ResponseEntity<?> getCategories() {
-        return ResponseEntity.ok().body(commerceService.getCategories());
+    @RequestMapping(value ="/get_sectors", method = RequestMethod.GET)
+    public ResponseEntity<?> getSectors() {
+        return ResponseEntity.ok().body(commerceService.getSectors());
     }
+
+    @RequestMapping(value ="/get_paymethods", method = RequestMethod.GET)
+    public ResponseEntity<?> getPaymethods() {
+        return ResponseEntity.ok().body(commerceService.getPaymethods());
+    }
+
+
 
 }
