@@ -19,7 +19,7 @@ public class ProductBuilder {
 
     public ProductBuilder(){
         this.name = "not name";
-        this.category= Category.LIMPIEZA;
+        this.category= Category.CLEANING;
         this.brand = "not brand";
         this.stock = 0;
         this.price = 0;
