@@ -3,6 +3,7 @@ package unq.dapp.ComprandoEnCasa.services.commerce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import unq.dapp.ComprandoEnCasa.model.domain.Category;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.ProductRepository;
 
@@ -36,4 +37,7 @@ public class ProductService {
         return repository.findByCommerceId(id);
     }
 
+    public Category[] getCategories() {
+        return Category.values();
+    }
 }

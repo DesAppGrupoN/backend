@@ -1,10 +1,10 @@
 package unq.dapp.ComprandoEnCasa.services.commerce;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.ComprandoEnCasa.model.domain.commerce.Sector;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.CommerceRepository;
 
 import java.util.List;
@@ -32,4 +32,7 @@ public class CommerceService {
         repository.deleteById(id);
     }
 
+    public Sector[] getCategories() {
+        return Sector.values();
+    }
 }

@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.services.commerce.CommerceService;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +31,14 @@ public class CommerceController {
     @PostMapping("/add")
     public void addCommerce(@RequestBody Commerce commerce) { commerceService.save(commerce); }
 
-
     @RequestMapping(value = "/delete/{commerceId}", method = RequestMethod.GET)
     public void delete(@PathVariable int commerceId) {
         commerceService.deleteById(commerceId);
+    }
+
+    @RequestMapping(value ="/get_categories", method = RequestMethod.GET)
+    public ResponseEntity<?> getCategories() {
+        return ResponseEntity.ok().body(commerceService.getCategories());
     }
 
 }

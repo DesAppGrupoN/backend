@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
-import unq.dapp.ComprandoEnCasa.model.domain.User;
-import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
-import unq.dapp.ComprandoEnCasa.services.commerce.CommerceService;
 import unq.dapp.ComprandoEnCasa.services.commerce.ProductService;
 
 import java.util.List;
@@ -44,6 +41,11 @@ public class ProductController {
     public ResponseEntity<?> findByCommerceId(@PathVariable int commerceId) {
         List<Product> productList = productService.getAllByCommerceId(commerceId);
         return ResponseEntity.ok().body(productList);
+    }
+
+    @RequestMapping(value ="/get_categories", method = RequestMethod.GET)
+    public ResponseEntity<?> getCategories() {
+        return ResponseEntity.ok().body(productService.getCategories());
     }
 
 }
