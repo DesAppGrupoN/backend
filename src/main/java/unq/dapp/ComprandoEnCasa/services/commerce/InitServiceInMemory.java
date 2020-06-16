@@ -44,7 +44,7 @@ public class InitServiceInMemory {
 		String nameCommerce = "Soy tu Farmacia";
 		String descriptionCommerce = "Red de servicios de atención farmacéutica y perfumerías.";
 		Sector sectorCommerce =(Sector.FARMACY);
-		String addressCommerce = "Av.Callo 110";
+		String addressCommerce = "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires";
 		String imageCommerce = "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp";
 		List<PayMethods> payMethodsCommerce = new ArrayList<PayMethods>();
 		payMethodsCommerce.add(PayMethods.CASH);
@@ -53,11 +53,11 @@ public class InitServiceInMemory {
 		Commerce commerce1 = new Commerce(nameCommerce,descriptionCommerce,sectorCommerce, addressCommerce,imageCommerce, payMethodsCommerce,maxDistanceCommerce, attentionScheduleCommerce);
 
 		//Commerce2
-		String nameCommerce2 = "Ringo";
-		String descriptionCommerce2 = "Delicious Food Express";
+		String nameCommerce2 = "La Tanita Pastas";
+		String descriptionCommerce2 = "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa";
 		Sector sectorCommerce2 =(Sector.FOOD);
-		String addressCommerce2 = "Av.Mitre 550";
-		String imageCommerce2 = "https://i.pinimg.com/originals/0b/8a/0d/0b8a0dafba62324247e9febcd7083874.jpg";
+		String addressCommerce2 = "Colón 272, Quilmes, Provincia de Buenos Aires";
+		String imageCommerce2 = "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg";
 		List<PayMethods> payMethodsCommerce2 = new ArrayList<PayMethods>();
 		payMethodsCommerce2.add(PayMethods.CREDIT_CARD);
 		payMethodsCommerce2.add(PayMethods.CASH);
@@ -93,31 +93,56 @@ public class InitServiceInMemory {
 		userService.save(user2);
 
 		//Product1
-		String nameProduct1 = "Sprite 3L";
-		Category categoryProduct1 = Category.DRINK;
-		String brandProduct1 = "The Coca-Cola Company";
-		Integer stockProduct1 = 1;
-		Integer priceProduct1 = 120;
-		String imageProduct1 = "https://supermercado.carrefour.com.ar/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/7/7/7790895064128_02.jpg";
+		String nameProduct1 = "Perfume Le Male Edt 125 Ml";
+		Category categoryProduct1 = Category.CLEANING;
+		String brandProduct1 = "Jean Paul Gaultier";
+		Integer stockProduct1 = 4;
+		Integer priceProduct1 = 6800;
+		String imageProduct1 = "https://cdn.batitienda.com/baticloud/images/product_ml_c4b8d08e0f9647f5ba3e40ad49a22caa_637086375184871160_0_m.webp";
 		Product product1= new Product(1,nameProduct1,categoryProduct1,brandProduct1,stockProduct1,priceProduct1,imageProduct1);
 
 		//Product2
-		String nameProduct2 = "CocaCola 3L";
-		Category categoryProduct2 = Category.DRINK;
-		String brandProduct2 = "The Coca-Cola Company";
+
+		String nameProduct2 = "Enjuague Bucal Cuidado Total Zero 250 Ml";
+		Category categoryProduct2 = Category.CLEANING;
+		String brandProduct2 = "Listerine";
 		Integer stockProduct2 = 4;
-		Integer priceProduct2 = 100;
-		String imageProduct2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
+		Integer priceProduct2 = 270;
+		String imageProduct2 = "https://cdn.batitienda.com/baticloud/images/product_ml_8c10ca2c011645bda61d701a28951639_637158394641424446_0_m.webp";
 		Product product2= new Product(1,nameProduct2,categoryProduct2,brandProduct2,stockProduct2,priceProduct2,imageProduct2);
 
 		//Product3
-		Integer stockProduct3 = 5 ;
-		Integer priceProduct3 = 150;
-		Product product3= new Product(2,nameProduct2,categoryProduct2,brandProduct2,stockProduct3,priceProduct3,imageProduct2);
+		String nameProduct3 = "CocaCola 3L";
+		Category categoryProduct3 = Category.DRINK;
+		String brandProduct3 = "The Coca-Cola Company";
+		Integer stockProduct3 = 4;
+		Integer priceProduct3 = 100;
+		String imageProduct3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
+		Product product3= new Product(2,nameProduct3,categoryProduct3,brandProduct3,stockProduct3,priceProduct3,imageProduct3);
+
+		//Product4
+		String nameProduct4 = "Sprite 3L";
+		Category categoryProduct4 = Category.DRINK;
+		String brandProduct4 = "The Coca-Cola Company";
+		Integer stockProduct4 = 1;
+		Integer priceProduct4 = 120;
+		String imageProduct4 = "https://supermercado.carrefour.com.ar/media/catalog/product/cache/1/image/1000x/040ec09b1e35df139433887a97daa66f/7/7/7790895064128_02.jpg";
+		Product product4= new Product(2,nameProduct4,categoryProduct4,brandProduct4,stockProduct4,priceProduct4,imageProduct4);
+
+		//Product4
+		String nameProduct5 = "Sorrentinos Fritos con Salsa de Hongos";
+		Category categoryProduct5 = Category.FOOD;
+		String brandProduct5 = "La Tanita";
+		Integer stockProduct5 = 1;
+		Integer priceProduct5 = 120;
+		String imageProduct5 = "https://media-cdn.tripadvisor.com/media/photo-s/18/83/3f/82/sorrentinos-fritos-con.jpg";
+		Product product5= new Product(2,nameProduct5,categoryProduct5,brandProduct5,stockProduct5,priceProduct5,imageProduct5);
 
 		//Add products
 		productService.save(product1);
 		productService.save(product2);
 		productService.save(product3);
+		productService.save(product4);
+		productService.save(product5);
 	}
 }
