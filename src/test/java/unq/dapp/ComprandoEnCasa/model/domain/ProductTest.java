@@ -11,7 +11,7 @@ public class ProductTest {
     public void constructorTest() {
         Integer commerceId = 1;
         String name = "name";
-        Category category = CLEANING;
+        Category category= CLEANING;
         String brand = "brand";
         Integer stock= 10;
         Integer price = 50;
