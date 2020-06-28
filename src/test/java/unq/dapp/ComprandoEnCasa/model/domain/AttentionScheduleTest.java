@@ -21,9 +21,10 @@ public class AttentionScheduleTest {
     public void attentionScheduleAddDayTimesTest() {
         DayOfWeek day = DayOfWeek.FRIDAY;
         OpeningTime openingTime= mock(OpeningTime.class);
+        when(openingTime.getDay()).thenReturn(day);
         AttentionSchedule schedule = new AttentionSchedule();
 
-        schedule.addDayTimes(day, openingTime);
+        schedule.addDayTimes(openingTime);
         assertEquals(schedule.getTimesOfTheDay(day).size(),1);
     }
 
@@ -33,10 +34,12 @@ public class AttentionScheduleTest {
         OpeningTime openingTime= mock(OpeningTime.class);
         OpeningTime openingTime2= mock(OpeningTime.class);
         AttentionSchedule schedule = new AttentionSchedule();
+        when(openingTime2.getDay()).thenReturn(day);
+        when(openingTime.getDay()).thenReturn(day);
 
-        schedule.addDayTimes(day, openingTime);
+        schedule.addDayTimes(openingTime);
         assertEquals(schedule.getTimesOfTheDay(day).size(),1);
-        schedule.addDayTimes(day, openingTime2);
+        schedule.addDayTimes(openingTime2);
         assertEquals(schedule.getTimesOfTheDay(day).size(),2);
     }
     @Test
@@ -44,36 +47,31 @@ public class AttentionScheduleTest {
         DayOfWeek friday = DayOfWeek.FRIDAY;
         DayOfWeek saturday = DayOfWeek.SATURDAY;
         OpeningTime openingTime= mock(OpeningTime.class);
+        OpeningTime openingTime2= mock(OpeningTime.class);
         AttentionSchedule schedule = new AttentionSchedule();
+        when(openingTime2.getDay()).thenReturn(friday);
+        when(openingTime.getDay()).thenReturn(saturday);
 
-        schedule.addDayTimes(friday,openingTime);
+        schedule.addDayTimes(openingTime);
         assertEquals(schedule.getDays().size(),1);
-        schedule.addDayTimes(saturday,openingTime);
+        schedule.addDayTimes(openingTime2);
         assertEquals(schedule.getDays().size(),2);
     }
-    @Test
-    public void attentionScheduleRemoveDayTest() {
-        DayOfWeek day = DayOfWeek.FRIDAY;
-        OpeningTime openingTime= mock(OpeningTime.class);
-        AttentionSchedule schedule = new AttentionSchedule();
 
-        schedule.addDayTimes(day,openingTime);
-        assertEquals(schedule.getDays().size(),1);
-        schedule.removeDay(day);
-        assertEquals(schedule.getDays().size(),0);
-    }
     @Test
     public void attentionScheduleRemoveDayTimeTest() {
         DayOfWeek day = DayOfWeek.FRIDAY;
         OpeningTime openingTime= mock(OpeningTime.class);
         OpeningTime openingTime2= mock(OpeningTime.class);
+        when(openingTime2.getDay()).thenReturn(day);
+        when(openingTime.getDay()).thenReturn(day);
         AttentionSchedule schedule = new AttentionSchedule();
 
-        schedule.addDayTimes(day,openingTime);
+        schedule.addDayTimes(openingTime);
         assertEquals(schedule.getTimesOfTheDay(day).size(),1);
-        schedule.addDayTimes(day,openingTime2);
+        schedule.addDayTimes(openingTime2);
         assertEquals(schedule.getTimesOfTheDay(day).size(),2);
-        schedule.removeDayTime(day,openingTime2);
+        schedule.removeDayTime(openingTime2);
         assertEquals(schedule.getTimesOfTheDay(day).size(),1);
     }
 
@@ -85,9 +83,10 @@ public class AttentionScheduleTest {
         OpeningTime openingTime= mock(OpeningTime.class);
         when(openingTime.isOpening(openTime)).thenReturn(true);
         when(openingTime.isOpening(closeTime)).thenReturn(false);
+        when(openingTime.getDay()).thenReturn(day);
         AttentionSchedule schedule = new AttentionSchedule();
 
-        schedule.addDayTimes(day,openingTime);
+        schedule.addDayTimes(openingTime);
         assertTrue(schedule.isOpening(day,openTime));
         assertFalse(schedule.isOpening(day,closeTime));
     }
@@ -102,11 +101,13 @@ public class AttentionScheduleTest {
         when(openingTime.isOpening(closeTime)).thenReturn(false);
         OpeningTime openingTime2= mock(OpeningTime.class);
         when(openingTime2.isOpening(openTime)).thenReturn(false);
+        when(openingTime2.getDay()).thenReturn(day);
+        when(openingTime.getDay()).thenReturn(day);
         when(openingTime2.isOpening(closeTime)).thenReturn(false);
         AttentionSchedule schedule = new AttentionSchedule();
 
-        schedule.addDayTimes(day,openingTime);
-        schedule.addDayTimes(day,openingTime2);
+        schedule.addDayTimes(openingTime);
+        schedule.addDayTimes(openingTime2);
         assertTrue(schedule.isOpening(day,openTime));
         assertFalse(schedule.isOpening(day,closeTime));
     }
@@ -120,8 +121,9 @@ public class AttentionScheduleTest {
         when(openingTime.getHourStart()).thenReturn(startingTime);
         when(openingTime.getHourEnd()).thenReturn(endingTime);
         when(openingTime.getHoursOpening()).thenReturn(startingTime.until(endingTime, ChronoUnit.HOURS)+1);
+        when(openingTime.getDay()).thenReturn(day);
 
-        schedule.addDayTimes(day,openingTime);
+        schedule.addDayTimes(openingTime);
 
         assertEquals(schedule.getTurnsForDay(day).get(0),startingTime);
         assertEquals(schedule.getTurnsForDay(day).size(),8);
@@ -142,9 +144,11 @@ public class AttentionScheduleTest {
         when(openingTime2.getHourStart()).thenReturn(startingTime2);
         when(openingTime2.getHourEnd()).thenReturn(endingTime2);
         when(openingTime2.getHoursOpening()).thenReturn(startingTime2.until(endingTime2, ChronoUnit.HOURS) +1);
+        when(openingTime2.getDay()).thenReturn(day);
+        when(openingTime.getDay()).thenReturn(day);
 
-        schedule.addDayTimes(day,openingTime);
-        schedule.addDayTimes(day,openingTime2);
+        schedule.addDayTimes(openingTime);
+        schedule.addDayTimes(openingTime2);
 
         assertEquals(schedule.getTurnsForDay(day).get(0),startingTime);
         assertEquals(schedule.getTurnsForDay(day).get(7),endingTime);

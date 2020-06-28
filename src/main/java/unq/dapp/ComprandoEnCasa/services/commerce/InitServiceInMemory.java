@@ -49,8 +49,7 @@ public class InitServiceInMemory {
 		List<PayMethods> payMethodsCommerce = new ArrayList<PayMethods>();
 		payMethodsCommerce.add(PayMethods.CASH);
 		Integer maxDistanceCommerce = 100 ;
-		AttentionSchedule attentionScheduleCommerce = new AttentionSchedule();
-		Commerce commerce1 = new Commerce(nameCommerce,descriptionCommerce,sectorCommerce, addressCommerce,imageCommerce, payMethodsCommerce,maxDistanceCommerce, attentionScheduleCommerce);
+		Commerce commerce1 = new Commerce(nameCommerce,descriptionCommerce,sectorCommerce, addressCommerce,imageCommerce, payMethodsCommerce,maxDistanceCommerce);
 
 		//Commerce2
 		String nameCommerce2 = "La Tanita Pastas";
@@ -62,9 +61,8 @@ public class InitServiceInMemory {
 		payMethodsCommerce2.add(PayMethods.CREDIT_CARD);
 		payMethodsCommerce2.add(PayMethods.CASH);
 		Integer maxDistanceCommerce2 = 300;
-		AttentionSchedule attentionScheduleCommerce2 = new AttentionSchedule();
 
-		Commerce commerce2 = new Commerce(nameCommerce2,descriptionCommerce2,sectorCommerce2, addressCommerce2,imageCommerce2, payMethodsCommerce2,maxDistanceCommerce2, attentionScheduleCommerce2);
+		Commerce commerce2 = new Commerce(nameCommerce2,descriptionCommerce2,sectorCommerce2, addressCommerce2,imageCommerce2, payMethodsCommerce2,maxDistanceCommerce2);
 
 		//Add commerces
 
