@@ -2,6 +2,8 @@ package unq.dapp.ComprandoEnCasa.model.domain.commerce;
 
 
 import org.hibernate.annotations.Cascade;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,8 +32,8 @@ public class Commerce {
     private List<PayMethods> payMethods;
 
     private Integer maxDistance;
-    @OneToOne(targetEntity=AttentionSchedule.class)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "attentionSchedule_id", referencedColumnName = "id")
     private AttentionSchedule attentionSchedule;
 
     public Commerce() { }

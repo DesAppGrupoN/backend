@@ -12,12 +12,17 @@ import java.util.stream.Collectors;
 @Entity
 public class AttentionSchedule {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer Id;
     @ElementCollection
     private List<OpeningTime> schedule;
     @Transient
     private List<Turn> turns ;
+
+    public Integer getId() { return Id; }
+
+    public void setId(Integer id) { Id = id; }
 
     public AttentionSchedule() {
         this.schedule = new ArrayList<OpeningTime>();
