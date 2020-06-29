@@ -17,36 +17,32 @@ public class AttentionSchedule {
     @ElementCollection
     private List<OpeningTime> schedule;
     @Transient
-    private List<Turn> turns ;
+    private List<Turn> turns;
 
     public AttentionSchedule() {
-        this.schedule = new ArrayList<OpeningTime>();
-
-        this.turns = new ArrayList<Turn>();
+        this.schedule = new ArrayList<>();
+        this.turns = new ArrayList<>();
     }
 
     public void addDayTimes( OpeningTime time) { schedule.add(time); }
 
     public List<OpeningTime> getTimesOfTheDay(DayOfWeek day) {
-        List<OpeningTime> even = schedule.stream()
-                .filter(openingTime -> openingTime.getDay()  == day)
+        return schedule.stream()
+                .filter(openingTime -> openingTime.getDay() == day)
                 .collect(Collectors.toList());
-        return even;
     }
 
     public List<DayOfWeek> getDays() {
-        List<DayOfWeek> days =
-                schedule.stream()
+        return schedule.stream()
                         .map(e->e.getDay())
                         .collect(Collectors.toList());
-        return days;
     }
 
     public void removeDayTime( OpeningTime time) { this.schedule.remove(time); }
 
     public boolean isOpening(DayOfWeek day, LocalTime time) {
         List<OpeningTime> times = this.getTimesOfTheDay(day);
-        Boolean bool = false;
+        boolean bool = false;
 
         for (OpeningTime openingTime : times) {
             bool = bool || openingTime.isOpening(time);
