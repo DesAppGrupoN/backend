@@ -12,23 +12,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CommerceService {
 
     @Autowired
     private CommerceRepository repository;
 
-    @Transactional
     public List<Commerce> findAll() { return repository.findAll(); }
 
-    @Transactional
     public Optional<Commerce> findById(int id) { return repository.findById(id); }
 
-    @Transactional
     public void save(Commerce commerce) {
         this.repository.save(commerce);
     }
 
-    @Transactional
+    public List<Commerce> search(String search) {
+        return repository.findBy(search.toLowerCase());
+    }
+
     public void deleteById(int id) {
         repository.deleteById(id);
     }

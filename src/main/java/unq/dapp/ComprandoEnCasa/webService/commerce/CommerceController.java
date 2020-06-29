@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/commerce")
 public class CommerceController {
 
@@ -46,6 +46,10 @@ public class CommerceController {
         return ResponseEntity.ok().body(commerceService.getPaymethods());
     }
 
-
+    @RequestMapping(value = "/search/{search}", method = RequestMethod.GET)
+    public ResponseEntity<?> search(@PathVariable String search) {
+        List<Commerce> commerceList = commerceService.search(search);
+        return ResponseEntity.ok().body(commerceList);
+    }
 
 }

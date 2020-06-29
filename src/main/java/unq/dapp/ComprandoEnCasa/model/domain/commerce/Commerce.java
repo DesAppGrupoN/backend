@@ -20,7 +20,7 @@ public class Commerce {
 
     private String address;
 
-    private String image ;
+    private String image;
 
     @ElementCollection(targetClass = PayMethods.class)
     @CollectionTable
