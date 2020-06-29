@@ -1,7 +1,6 @@
 package unq.dapp.ComprandoEnCasa.model.domain.commerce;
 
 
-import com.sun.javafx.geom.transform.Identity;
 import unq.dapp.ComprandoEnCasa.model.domain.Turn;
 
 import javax.persistence.*;
