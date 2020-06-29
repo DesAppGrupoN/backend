@@ -19,9 +19,8 @@ public class CommerceTest {
         String image = "image";
         ArrayList<PayMethods> payMethods = new ArrayList<PayMethods>();
         Integer maxDistance = 100;
-        AttentionSchedule attentionSchedule = new AttentionSchedule();
 
-        Commerce commerce = new Commerce(name,description,sector, address,image, payMethods, maxDistance, attentionSchedule);
+        Commerce commerce = new Commerce(name,description,sector, address,image, payMethods, maxDistance);
 
         assertEquals(name, commerce.getName());
         assertEquals(description, commerce.getDescription());
@@ -30,7 +29,6 @@ public class CommerceTest {
         assertEquals(image, commerce.getImage());
         assertEquals(payMethods, commerce.getPayMethods());
         assertEquals(maxDistance, commerce.getMaxDistance());
-        assertEquals(attentionSchedule, commerce.getAttentionSchedule());
     }
 
 }

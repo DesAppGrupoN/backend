@@ -3,51 +3,46 @@ package unq.dapp.ComprandoEnCasa.model.domain.commerce;
 
 import unq.dapp.ComprandoEnCasa.model.domain.Turn;
 
+import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
+@Entity
 public class AttentionSchedule {
-
-    private Map<DayOfWeek, List<OpeningTime>> schedule;
+    @Id
+    @GeneratedValue
+    private Integer Id;
+    @ElementCollection
+    private List<OpeningTime> schedule;
+    @Transient
     private List<Turn> turns ;
 
     public AttentionSchedule() {
-        this.schedule = new HashMap<DayOfWeek, List<OpeningTime>>();
+        this.schedule = new ArrayList<OpeningTime>();
+
         this.turns = new ArrayList<Turn>();
     }
 
-    public void addDayTimes(DayOfWeek day, OpeningTime time) {
-        if (!schedule.containsKey(day)) {
-            List list = new ArrayList();
-            list.add(time);
-            schedule.put(day, list);
-        } else {
-            List list = schedule.get(day);
-            list.add(time);
-            schedule.put(day, list);
-        }
-    }
+    public void addDayTimes( OpeningTime time) { schedule.add(time); }
 
     public List<OpeningTime> getTimesOfTheDay(DayOfWeek day) {
-        return schedule.get(day);
+        List<OpeningTime> even = schedule.stream()
+                .filter(openingTime -> openingTime.getDay()  == day)
+                .collect(Collectors.toList());
+        return even;
     }
 
-    public Set<DayOfWeek> getDays() {
-        return this.schedule.keySet();
+    public List<DayOfWeek> getDays() {
+        List<DayOfWeek> days =
+                schedule.stream()
+                        .map(e->e.getDay())
+                        .collect(Collectors.toList());
+        return days;
     }
 
-    public void removeDay(DayOfWeek day) {
-        this.schedule.remove(day);
-    }
-
-    public void removeDayTime(DayOfWeek day, OpeningTime time) {
-
-        List<OpeningTime> times = this.getTimesOfTheDay(day);
-        times.remove(time);
-        this.schedule.remove(day);
-        this.schedule.put(day, times);
-    }
+    public void removeDayTime( OpeningTime time) { this.schedule.remove(time); }
 
     public boolean isOpening(DayOfWeek day, LocalTime time) {
         List<OpeningTime> times = this.getTimesOfTheDay(day);

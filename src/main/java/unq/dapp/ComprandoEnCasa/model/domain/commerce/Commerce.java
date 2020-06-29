@@ -1,6 +1,8 @@
 package unq.dapp.ComprandoEnCasa.model.domain.commerce;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,13 +30,13 @@ public class Commerce {
     private List<PayMethods> payMethods;
 
     private Integer maxDistance;
-
-    @Transient
+    @OneToOne(targetEntity=AttentionSchedule.class)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private AttentionSchedule attentionSchedule;
 
     public Commerce() { }
 
-    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance, AttentionSchedule attentionSchedule) {
+    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance) {
         this.name = name;
         this.description = description;
         this.sector = sector;
@@ -42,7 +44,7 @@ public class Commerce {
         this.image = image ;
         this.payMethods = payMethods;
         this.maxDistance = maxDistance;
-        this.attentionSchedule = attentionSchedule;
+        this.attentionSchedule = new AttentionSchedule();
     }
     public String getName() {
         return name;
