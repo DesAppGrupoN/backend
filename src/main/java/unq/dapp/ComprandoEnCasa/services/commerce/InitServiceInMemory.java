@@ -40,35 +40,37 @@ public class InitServiceInMemory {
 
 
 	private void fireInitialData() {
-		//Commerce1
-		String nameCommerce = "Soy tu Farmacia";
-		String descriptionCommerce = "Red de servicios de atención farmacéutica y perfumerías.";
-		Sector sectorCommerce =(Sector.FARMACY);
-		String addressCommerce = "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires";
-		String imageCommerce = "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp";
-		List<PayMethods> payMethodsCommerce = new ArrayList<PayMethods>();
-		payMethodsCommerce.add(PayMethods.CASH);
-		Integer maxDistanceCommerce = 100 ;
-		Commerce commerce1 = new Commerce(nameCommerce,descriptionCommerce,sectorCommerce, addressCommerce,imageCommerce, payMethodsCommerce,maxDistanceCommerce);
+		this.createNewCommerce("Soy tu Farmacia", "Red de servicios de atención farmacéutica y perfumerías.", Sector.FOOD, "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires", "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp", new ArrayList<PayMethods>() {{add(PayMethods.CASH);}}, 100);
+		this.createNewCommerce("La Tanita Pastas", "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa", Sector.FARMACY, "Colón 272, Quilmes, Provincia de Buenos Aires", "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("McDonald’s", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Bartolomé Mitre 639, Avellaneda, Provincia de Buenos Aires", "https://d25dk4h1q4vl9b.cloudfront.net/bundles/front/media/images/favicons/favicon-512.png", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Carrefour", "Supermercado", Sector.SUPERMARKER, "Av. Dardo Rocha 849, Bernal, Provincia de Buenos Aires", "https://promosdelbanco.com/wp-content/uploads/2017/04/Carrefour-Supermercados.png", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Burgerking", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Corrientes 1770, Buenos Aires", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbmcIql-C7FAEemN2sdWW82SB8bHmuQyNB8A&usqp=CAU", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD); add(PayMethods.CREDIT_CARD);}}, 300);
 
-		//Commerce2
-		String nameCommerce2 = "La Tanita Pastas";
-		String descriptionCommerce2 = "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa";
-		Sector sectorCommerce2 =(Sector.FOOD);
-		String addressCommerce2 = "Colón 272, Quilmes, Provincia de Buenos Aires";
-		String imageCommerce2 = "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg";
-		List<PayMethods> payMethodsCommerce2 = new ArrayList<PayMethods>();
-		payMethodsCommerce2.add(PayMethods.CREDIT_CARD);
-		payMethodsCommerce2.add(PayMethods.CASH);
-		Integer maxDistanceCommerce2 = 300;
-
-		Commerce commerce2 = new Commerce(nameCommerce2,descriptionCommerce2,sectorCommerce2, addressCommerce2,imageCommerce2, payMethodsCommerce2,maxDistanceCommerce2);
-
-		//Add commerces
-
-		commerceService.save(commerce1);
-		commerceService.save(commerce2);
-
+		this.createNewCommerce("Soy tu Farmacia", "Red de servicios de atención farmacéutica y perfumerías.", Sector.FOOD, "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires", "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp", new ArrayList<PayMethods>() {{add(PayMethods.CASH);}}, 100);
+		this.createNewCommerce("La Tanita Pastas", "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa", Sector.FARMACY, "Colón 272, Quilmes, Provincia de Buenos Aires", "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("McDonald’s", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Bartolomé Mitre 639, Avellaneda, Provincia de Buenos Aires", "https://d25dk4h1q4vl9b.cloudfront.net/bundles/front/media/images/favicons/favicon-512.png", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Carrefour", "Supermercado", Sector.SUPERMARKER, "Av. Dardo Rocha 849, Bernal, Provincia de Buenos Aires", "https://promosdelbanco.com/wp-content/uploads/2017/04/Carrefour-Supermercados.png", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Burgerking", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Corrientes 1770, Buenos Aires", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbmcIql-C7FAEemN2sdWW82SB8bHmuQyNB8A&usqp=CAU", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("Soy tu Farmacia", "Red de servicios de atención farmacéutica y perfumerías.", Sector.FOOD, "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires", "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp", new ArrayList<PayMethods>() {{add(PayMethods.CASH);}}, 100);
+		this.createNewCommerce("La Tanita Pastas", "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa", Sector.FARMACY, "Colón 272, Quilmes, Provincia de Buenos Aires", "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("McDonald’s", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Bartolomé Mitre 639, Avellaneda, Provincia de Buenos Aires", "https://d25dk4h1q4vl9b.cloudfront.net/bundles/front/media/images/favicons/favicon-512.png", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Carrefour", "Supermercado", Sector.SUPERMARKER, "Av. Dardo Rocha 849, Bernal, Provincia de Buenos Aires", "https://promosdelbanco.com/wp-content/uploads/2017/04/Carrefour-Supermercados.png", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Burgerking", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Corrientes 1770, Buenos Aires", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbmcIql-C7FAEemN2sdWW82SB8bHmuQyNB8A&usqp=CAU", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("Soy tu Farmacia", "Red de servicios de atención farmacéutica y perfumerías.", Sector.FOOD, "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires", "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp", new ArrayList<PayMethods>() {{add(PayMethods.CASH);}}, 100);
+		this.createNewCommerce("La Tanita Pastas", "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa", Sector.FARMACY, "Colón 272, Quilmes, Provincia de Buenos Aires", "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("McDonald’s", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Bartolomé Mitre 639, Avellaneda, Provincia de Buenos Aires", "https://d25dk4h1q4vl9b.cloudfront.net/bundles/front/media/images/favicons/favicon-512.png", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Carrefour", "Supermercado", Sector.SUPERMARKER, "Av. Dardo Rocha 849, Bernal, Provincia de Buenos Aires", "https://promosdelbanco.com/wp-content/uploads/2017/04/Carrefour-Supermercados.png", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Burgerking", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Corrientes 1770, Buenos Aires", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbmcIql-C7FAEemN2sdWW82SB8bHmuQyNB8A&usqp=CAU", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("Soy tu Farmacia", "Red de servicios de atención farmacéutica y perfumerías.", Sector.FOOD, "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires", "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp", new ArrayList<PayMethods>() {{add(PayMethods.CASH);}}, 100);
+		this.createNewCommerce("La Tanita Pastas", "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa", Sector.FARMACY, "Colón 272, Quilmes, Provincia de Buenos Aires", "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("McDonald’s", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Bartolomé Mitre 639, Avellaneda, Provincia de Buenos Aires", "https://d25dk4h1q4vl9b.cloudfront.net/bundles/front/media/images/favicons/favicon-512.png", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Carrefour", "Supermercado", Sector.SUPERMARKER, "Av. Dardo Rocha 849, Bernal, Provincia de Buenos Aires", "https://promosdelbanco.com/wp-content/uploads/2017/04/Carrefour-Supermercados.png", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Burgerking", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Corrientes 1770, Buenos Aires", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbmcIql-C7FAEemN2sdWW82SB8bHmuQyNB8A&usqp=CAU", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("Soy tu Farmacia", "Red de servicios de atención farmacéutica y perfumerías.", Sector.FOOD, "Av. Hipólito Yrigoyen 162, Quilmes, Provincia de Buenos Aires", "https://http2.mlstatic.com/nebulizador-ultrasonico-silencioso-soy-tu-farmacia-D_NQ_NP_951042-MLA31062198598_062019-F.webp", new ArrayList<PayMethods>() {{add(PayMethods.CASH);}}, 100);
+		this.createNewCommerce("La Tanita Pastas", "Comida para llevar, Reservas, Asiento, Sillitas altas disponibles, Sirve alcohol, Wi-Fi gratis, Servicio de mesa", Sector.FARMACY, "Colón 272, Quilmes, Provincia de Buenos Aires", "https://dondecomequilmes.com/wp-content/uploads/2016/06/La-Tanita_lgtn2.jpg", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 300);
+		this.createNewCommerce("McDonald’s", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Bartolomé Mitre 639, Avellaneda, Provincia de Buenos Aires", "https://d25dk4h1q4vl9b.cloudfront.net/bundles/front/media/images/favicons/favicon-512.png", new ArrayList<PayMethods>() {{add(PayMethods.CASH); add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Carrefour", "Supermercado", Sector.SUPERMARKER, "Av. Dardo Rocha 849, Bernal, Provincia de Buenos Aires", "https://promosdelbanco.com/wp-content/uploads/2017/04/Carrefour-Supermercados.png", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD);}}, 500);
+		this.createNewCommerce("Burgerking", "Hamburguesas , Pollo, Ensaladas", Sector.FOOD, "Av. Corrientes 1770, Buenos Aires", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbmcIql-C7FAEemN2sdWW82SB8bHmuQyNB8A&usqp=CAU", new ArrayList<PayMethods>() {{add(PayMethods.CREDIT_CARD); add(PayMethods.CREDIT_CARD);}}, 300);
 		//User1
 
 		String usernameUser1 = "ramiro";
@@ -142,5 +144,10 @@ public class InitServiceInMemory {
 		productService.save(product3);
 		productService.save(product4);
 		productService.save(product5);
+	}
+
+	private void createNewCommerce(String name, String description, Sector sector, String address, String image, List<PayMethods> payMethods, Integer maxDistance) {
+		Commerce commerce = new Commerce(name, description, sector, address, image, payMethods, maxDistance);
+		commerceService.save(commerce);
 	}
 }
