@@ -31,7 +31,7 @@ public class AttentionSchedule {
     public AttentionSchedule() {
     }
 
-    public AttentionSchedule(ArrayList<DayOfWeek> days, LocalTime openingTime, LocalTime closingTime) {
+    public AttentionSchedule(List<DayOfWeek> days, LocalTime openingTime, LocalTime closingTime) {
         this.days = days;
         this.openingTime = openingTime;
         this.closingTime = closingTime;

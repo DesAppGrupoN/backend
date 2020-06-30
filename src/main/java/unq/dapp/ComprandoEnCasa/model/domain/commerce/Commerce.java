@@ -33,12 +33,12 @@ public class Commerce {
 
     private Integer maxDistance;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     private AttentionSchedule attentionSchedule;
 
     public Commerce() { }
 
-    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance) {
+    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance,AttentionSchedule attentionSchedule) {
         this.name = name;
         this.description = description;
         this.sector = sector;
@@ -46,7 +46,7 @@ public class Commerce {
         this.image = image ;
         this.payMethods = payMethods;
         this.maxDistance = maxDistance;
-        this.attentionSchedule = new AttentionSchedule();
+        this.attentionSchedule = attentionSchedule;
     }
     public String getName() {
         return name;
