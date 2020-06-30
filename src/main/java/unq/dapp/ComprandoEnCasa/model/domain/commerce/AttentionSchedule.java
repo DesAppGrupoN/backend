@@ -1,80 +1,77 @@
 package unq.dapp.ComprandoEnCasa.model.domain.commerce;
-
-
 import unq.dapp.ComprandoEnCasa.model.domain.Turn;
-
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Entity
 public class AttentionSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer Id;
     @ElementCollection
-    private List<OpeningTime> schedule;
+    @Enumerated(EnumType.STRING)
+    private List<DayOfWeek> days;
+    private LocalTime openingTime;
+    private LocalTime closingTime;
+
     @Transient
     private List<Turn> turns;
 
-    public Integer getId() { return Id; }
-
-    public void setId(Integer id) { Id = id; }
-
-    public AttentionSchedule() {
-        this.schedule = new ArrayList<>();
-        this.turns = new ArrayList<>();
+    public Integer getId() {
+        return Id;
     }
 
-    public void addDayTimes( OpeningTime time) { schedule.add(time); }
+    public void setId(Integer id) {
+        Id = id;
+    }
 
-    public List<OpeningTime> getTimesOfTheDay(DayOfWeek day) {
-        return schedule.stream()
-                .filter(openingTime -> openingTime.getDay() == day)
-                .collect(Collectors.toList());
+    public AttentionSchedule() {
+    }
+
+    public AttentionSchedule(ArrayList<DayOfWeek> days, LocalTime openingTime, LocalTime closingTime) {
+        this.days = days;
+        this.openingTime = openingTime;
+        this.closingTime = closingTime;
     }
 
     public List<DayOfWeek> getDays() {
-        return schedule.stream()
-                        .map(e->e.getDay())
-                        .collect(Collectors.toList());
+        return this.days;
     }
-
-    public void removeDayTime( OpeningTime time) { this.schedule.remove(time); }
+    public boolean isOpeningDay(DayOfWeek day){
+        return days.contains(day);
+    }
 
     public boolean isOpening(DayOfWeek day, LocalTime time) {
-        List<OpeningTime> times = this.getTimesOfTheDay(day);
-        boolean bool = false;
-
-        for (OpeningTime openingTime : times) {
-            bool = bool || openingTime.isOpening(time);
-        }
-
-        return bool;
+        return this.days.contains(day) && time.isAfter(openingTime) && time.isBefore(closingTime);
     }
 
-    public List<Turn> getTurns() { return turns; }
-
-    public void setTurns(List<Turn> turns) { this.turns = turns; }
-
-    public List<LocalTime> getTurnsForDay(DayOfWeek day) {
-        List<OpeningTime> times = this.getTimesOfTheDay(day);
-        List<LocalTime> turns = new ArrayList<LocalTime>();
-
-        for (OpeningTime openingTime : times) {
-            LocalTime hour = openingTime.getHourStart();
-            long hours = openingTime.getHoursOpening();
-            LocalTime hourClosing = openingTime.getHourEnd();
-            for (int i = -1; i < hours*2; ++i)
-                if(hour.isBefore(hourClosing) || hour.equals(hourClosing)){
-                    turns.add(hour);
-                    hour= hour.plusMinutes(30);}
-        }
+    public List<Turn> getTurns() {
         return turns;
     }
+
+    public void setTurns(List<Turn> turns) {
+        this.turns = turns;
+    }
+
+    public List<LocalTime> getTurnsForDay(DayOfWeek day) {
+        List<LocalTime> turns = new ArrayList<LocalTime>();
+        LocalTime hour = this.openingTime;
+        long hours = this.openHours();
+        LocalTime hourClosing = this.closingTime;
+        for (int i = -1; i < hours * 2; ++i)
+            if (hour.isBefore(hourClosing) || hour.equals(hourClosing)) {
+                turns.add(hour);
+                hour = hour.plusMinutes(30);
+            }
+
+        return turns;
+    }
+
+    public long openHours() { return this.openingTime.until(this.closingTime, ChronoUnit.HOURS); }
+
 
     public void assignTurn(Turn turn) {
         this.turns.add(turn);
@@ -82,5 +79,6 @@ public class AttentionSchedule {
     public void removeTurn(Turn turn) {
         this.turns.remove(turn);
     }
+
 
 }

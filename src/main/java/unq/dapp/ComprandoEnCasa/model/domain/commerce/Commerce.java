@@ -32,8 +32,8 @@ public class Commerce {
     private List<PayMethods> payMethods;
 
     private Integer maxDistance;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "attentionSchedule_id", referencedColumnName = "id")
     private AttentionSchedule attentionSchedule;
 
     public Commerce() { }
