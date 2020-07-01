@@ -30,7 +30,6 @@ public class CommerceTest {
         assertEquals(image, commerce.getImage());
         assertEquals(payMethods, commerce.getPayMethods());
         assertEquals(maxDistance, commerce.getMaxDistance());
-        assertEquals(attentionSchedule,commerce.getAttentionSchedule());
     }
 
 }

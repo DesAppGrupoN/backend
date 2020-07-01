@@ -33,7 +33,7 @@ public class Commerce {
 
     private Integer maxDistance;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     private AttentionSchedule attentionSchedule;
 
     public Commerce() { }
