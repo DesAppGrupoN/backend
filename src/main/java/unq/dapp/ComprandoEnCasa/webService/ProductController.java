@@ -19,6 +19,7 @@ public class ProductController {
 
     @RequestMapping(value = "/get_all", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
+        System.out.println("BORRAR ESTO");
         List<Product> productsList = productService.findAll();
         return ResponseEntity.ok().body(productsList);
     }
