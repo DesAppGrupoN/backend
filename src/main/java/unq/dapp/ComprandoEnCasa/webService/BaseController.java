@@ -1,4 +1,4 @@
-package unq.dapp.ComprandoEnCasa.webService.commerce;
+package unq.dapp.ComprandoEnCasa.webService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
