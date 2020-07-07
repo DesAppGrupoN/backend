@@ -1,4 +1,4 @@
-package unq.dapp.ComprandoEnCasa.services.commerce;
+package unq.dapp.ComprandoEnCasa.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

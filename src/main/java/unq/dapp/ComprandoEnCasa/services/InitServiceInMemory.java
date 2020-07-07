@@ -1,4 +1,4 @@
-package unq.dapp.ComprandoEnCasa.services.commerce;
+package unq.dapp.ComprandoEnCasa.services;
 
 import javax.annotation.PostConstruct;
 

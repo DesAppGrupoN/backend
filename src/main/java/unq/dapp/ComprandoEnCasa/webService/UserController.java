@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.User;
-import unq.dapp.ComprandoEnCasa.services.commerce.UserService;
+import unq.dapp.ComprandoEnCasa.services.UserService;
 
 import java.util.List;
 import java.util.Optional;

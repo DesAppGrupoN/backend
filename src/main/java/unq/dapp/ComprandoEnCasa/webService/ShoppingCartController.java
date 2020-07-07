@@ -5,12 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
-import unq.dapp.ComprandoEnCasa.model.domain.User;
-import unq.dapp.ComprandoEnCasa.services.commerce.ProductService;
-import unq.dapp.ComprandoEnCasa.services.commerce.ShoppingCartService;
+import unq.dapp.ComprandoEnCasa.services.ShoppingCartService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
     @RequestMapping("/shoppingcart")

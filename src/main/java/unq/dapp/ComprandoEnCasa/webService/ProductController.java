@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
-import unq.dapp.ComprandoEnCasa.services.commerce.ProductService;
+import unq.dapp.ComprandoEnCasa.services.EmailService;
+import unq.dapp.ComprandoEnCasa.services.ProductService;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +18,15 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private EmailService emailService;
+
     @RequestMapping(value = "/get_all", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
-        System.out.println("BORRAR ESTO");
+        try {
+            emailService.sendNotificaitoin();
+        }
+        catch (Exception e) {}
         List<Product> productsList = productService.findAll();
         return ResponseEntity.ok().body(productsList);
     }
