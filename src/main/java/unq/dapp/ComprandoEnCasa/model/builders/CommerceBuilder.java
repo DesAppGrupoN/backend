@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CommerceBuilder {
 
+    private Integer id;
     private String name;
     private String description;
     private Sector sector;
@@ -26,6 +27,7 @@ public class CommerceBuilder {
     }
 
     public  CommerceBuilder(){
+        this.id = null;
         this.name = "name";
         this.description = "description";
         this.sector = Sector.FOOD;
@@ -46,6 +48,11 @@ public class CommerceBuilder {
         commerce.setPayMethods(this.payMethods);
         commerce.setMaxDistance(this.maxDistance);
         commerce.setAttentionSchedule(this.attentionSchedule);
+
+        if(this.id != null) {
+            commerce.setId(this.id);
+        }
+
         return commerce;
     }
 
@@ -88,5 +95,9 @@ public class CommerceBuilder {
     }
 
 
+    public CommerceBuilder withId(Integer id) {
+        this.id = id;
+        return this;
+    }
 
 }

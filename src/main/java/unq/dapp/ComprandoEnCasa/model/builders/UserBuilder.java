@@ -3,6 +3,13 @@ package unq.dapp.ComprandoEnCasa.model.builders;
 
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
 import unq.dapp.ComprandoEnCasa.model.domain.User;
+import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class UserBuilder {
 
@@ -12,6 +19,8 @@ public class UserBuilder {
     private String name;
     private String lastName;
     private ShoppingCart shoppingCart;
+    private List<Commerce> commerceList;
+    private Map<LocalDate,ShoppingCart> purchaseHistory;
 
     public static UserBuilder aUser() {
         return new UserBuilder();
@@ -25,7 +34,8 @@ public class UserBuilder {
         this.name = "not name";
         this.lastName = "not lastName";
         this.shoppingCart = new ShoppingCart();
-
+        this.commerceList = new ArrayList<>();
+        this.purchaseHistory = new HashMap<LocalDate, ShoppingCart>();
     }
 
     public User build() {

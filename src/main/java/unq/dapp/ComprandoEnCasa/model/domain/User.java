@@ -1,23 +1,33 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
+import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.model.exceptions.InvalidUsernameOrPasswordException;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Entity
 public class User {
 
-    @Id
+    @Column(unique = true)
     private String username;
+
     private String password;
+
+    @Id
     private String email;
     private String name;
     private String lastName;
     @OneToOne (cascade = {CascadeType.ALL})
     private ShoppingCart shoppingCart;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Commerce> commerceList;
+
     @ElementCollection
     private Map<LocalDate,ShoppingCart> purchaseHistory;
     private boolean statusNotifications;
@@ -26,13 +36,14 @@ public class User {
 
     public User(){
         this.secretManager =  new SecretManager("secreto");
-        shoppingCart=new ShoppingCart();
-        purchaseHistory= new HashMap<LocalDate, ShoppingCart>();
-        statusNotifications= true;
+        shoppingCart = new ShoppingCart();
+        purchaseHistory = new HashMap<LocalDate, ShoppingCart>();
+        statusNotifications = true;
+
     }
 
     public User(String username, String password){
-        this.secretManager =  new SecretManager("secreto");
+        this.secretManager = new SecretManager("secreto");
         if(username.isEmpty() || password.isEmpty()){
             throw new InvalidUsernameOrPasswordException();
         }
@@ -47,7 +58,9 @@ public class User {
         this.email = email;
         this.name = name;
         this.lastName = lastName;
+        this.commerceList = new ArrayList<>();
     }
+
     public String getUsername() { return username; }
 
     public String getPassword() { return this.secretManager.decrypt(this.password); }
@@ -89,4 +102,15 @@ public class User {
     public void enableNotifications() { this.setStatusNotifications(true);}
 
     public void disableNotifications() { this.setStatusNotifications(false);}
+
+    public List<Commerce> getCommerceList() {
+        return commerceList;
+    }
+
+    public void addComerce(Commerce commerce) {
+        if(commerceList.contains(commerce)) {
+            commerceList.remove(commerce);
+        }
+        this.commerceList.add(commerce);
+    }
 }

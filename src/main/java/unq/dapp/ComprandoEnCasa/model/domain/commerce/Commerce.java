@@ -48,6 +48,12 @@ public class Commerce {
         this.maxDistance = maxDistance;
         this.attentionSchedule = attentionSchedule;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other.getClass() == this.getClass() && ((Commerce) other).id == this.id;
+    }
+
     public String getName() {
         return name;
     }
@@ -101,6 +107,8 @@ public class Commerce {
     }
 
     public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public void setAttentionSchedule(AttentionSchedule attentionSchedule) {
         this.attentionSchedule = attentionSchedule;
