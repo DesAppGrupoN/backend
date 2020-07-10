@@ -32,9 +32,9 @@ public class CommerceController {
     @PostMapping("/add")
     public void addCommerce(@RequestBody CommerceDTO commerceDTO) { commerceService.save(commerceDTO); }
 
-    @RequestMapping(value = "/delete/{commerceId}", method = RequestMethod.GET)
-    public void delete(@PathVariable int commerceId) {
-        commerceService.deleteById(commerceId);
+    @PostMapping(value = "/delete")
+    public void delete(@RequestBody CommerceDTO commerceDTO) {
+        commerceService.delete(commerceDTO);
     }
 
     @RequestMapping(value ="/get_sectors", method = RequestMethod.GET)

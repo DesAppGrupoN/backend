@@ -113,4 +113,8 @@ public class User {
         }
         this.commerceList.add(commerce);
     }
+
+    public void removeCommerce(Commerce commerce) {
+        commerceList.remove(commerce);
+    }
 }

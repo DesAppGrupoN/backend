@@ -55,8 +55,13 @@ public class CommerceService {
         return repository.findBy(search.toLowerCase());
     }
 
-    public void deleteById(int id) {
-        repository.deleteById(id);
+    public void delete(CommerceDTO commerceDTO) {
+        Optional<User> user = userRepository.findByEmail(commerceDTO.getUserEmail());
+        if(user.isPresent()) {
+            Commerce commerce = repository.findById(commerceDTO.getId()).orElse(new Commerce());
+            user.get().removeCommerce(commerce);
+            userRepository.save(user.get());
+        }
     }
 
     public Sector[] getSectors() {
