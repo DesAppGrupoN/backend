@@ -56,4 +56,7 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.getCategories());
     }
 
+    @PostMapping("/addBatch")
+    public void addProducts(@RequestBody String product) { System.out.println("ACA:" + product); }
+
 }
