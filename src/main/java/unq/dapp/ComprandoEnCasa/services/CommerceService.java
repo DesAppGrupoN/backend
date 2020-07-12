@@ -42,6 +42,7 @@ public class CommerceService {
                         .withPayMethods(commerceDTO.getPayMethods())
                         .withSector(commerceDTO.getSector())
                         .withDescription(commerceDTO.getDescription())
+                        .withAttentionSchedule(commerceDTO.getAttentionSchedule())
                         .withId(commerceDTO.getId())
                         .build();
 

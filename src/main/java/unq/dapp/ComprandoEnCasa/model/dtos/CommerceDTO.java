@@ -90,9 +90,7 @@ public class CommerceDTO {
         return attentionSchedule;
     }
 
-    public void setAttentionSchedule(AttentionSchedule attentionSchedule) {
-        this.attentionSchedule = attentionSchedule;
-    }
+    public void setAttentionSchedule(AttentionSchedule attentionSchedule) { this.attentionSchedule = attentionSchedule; }
 
     public String getUserEmail() {
         return userEmail;

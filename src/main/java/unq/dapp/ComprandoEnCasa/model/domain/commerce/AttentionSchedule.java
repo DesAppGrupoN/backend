@@ -40,6 +40,9 @@ public class AttentionSchedule {
     public List<DayOfWeek> getDays() {
         return this.days;
     }
+
+    public void setDays(List<DayOfWeek> days) { this.days = days; }
+
     public boolean isOpeningDay(DayOfWeek day){
         return days.contains(day);
     }
@@ -47,6 +50,14 @@ public class AttentionSchedule {
     public boolean isOpening(DayOfWeek day, LocalTime time) {
         return this.days.contains(day) && time.isAfter(openingTime) && time.isBefore(closingTime);
     }
+
+    public LocalTime getOpeningTime() { return openingTime; }
+
+    public void setOpeningTime(LocalTime openingTime) { this.openingTime = openingTime; }
+
+    public LocalTime getClosingTime() { return closingTime; }
+
+    public void setClosingTime(LocalTime closingTime) { this.closingTime = closingTime; }
 
     public List<Turn> getTurns() {
         return turns;
