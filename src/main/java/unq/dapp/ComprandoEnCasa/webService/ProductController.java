@@ -1,22 +1,15 @@
 package unq.dapp.ComprandoEnCasa.webService;
 
-import com.opencsv.CSVParser;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
-import unq.dapp.ComprandoEnCasa.model.utils.CSVProduct;
 import unq.dapp.ComprandoEnCasa.model.utils.OpenCSVReadAndParseToBean;
 import unq.dapp.ComprandoEnCasa.services.EmailService;
 import unq.dapp.ComprandoEnCasa.services.ProductService;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,19 +63,9 @@ public class ProductController {
     public void addProducts(@RequestParam MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             System.out.print("Esta vacio el file");
-        }
-        else {
-
+        } else {
             OpenCSVReadAndParseToBean openCSVReadAndParseToBean = new OpenCSVReadAndParseToBean();
-            List<CSVProduct> res = openCSVReadAndParseToBean.main(file);
-            System.out.print(res);
+            List<Product> productList = openCSVReadAndParseToBean.main(file);
+            productList.stream().forEach((product)->productService.save(product));
         }
-
-
-
-
-
-
-
-
-}
+    }}
