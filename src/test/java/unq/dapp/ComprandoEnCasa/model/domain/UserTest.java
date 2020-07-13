@@ -39,6 +39,7 @@ public class UserTest {
 
         verify(shoppingCartMock, times(1)).addItem(productMock, 1);
     }
+
     @Test
     public void userShouldCleanToShoppingCart() {
         User user = new User();
@@ -50,24 +51,14 @@ public class UserTest {
         user.cleanShoppingCart();
         verify(shoppingCartMock, times(1)).emptyCart();
     }
-    @Test
-    public void ShouldBuyShoppingCart() {
-        User user = new User();
-        ShoppingCart shoppingCartMock = mock(ShoppingCart.class);
-        Product productMock = mock(Product.class);
 
-        user.setShoppingCart(shoppingCartMock);
-        user.addToCart(productMock, 1);
-        user.buyShoppingCart(shoppingCartMock);
-        assertEquals(user.getPurchaseHistory().size(), 1);
-        assertEquals(user.getPurchaseHistory().get(LocalDate.now()), shoppingCartMock);
-    }
     @Test
     public void testUserEnableNotifications() {
         User user = new User();
         user.enableNotifications();
         assertTrue(user.getStatusNotifications());
     }
+
     @Test
     public void testUserDisableNotifications() {
         User user = new User();

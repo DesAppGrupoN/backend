@@ -5,39 +5,58 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
+import unq.dapp.ComprandoEnCasa.model.domain.User;
+import unq.dapp.ComprandoEnCasa.model.dtos.ProductShoppingCartDTO;
+import unq.dapp.ComprandoEnCasa.persistence.commerce.ProductRepository;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.ShoppingCartRepository;
+import unq.dapp.ComprandoEnCasa.persistence.commerce.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ShoppingCartService {
 
     @Autowired
     private ShoppingCartRepository repository;
 
-    @Transactional
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
     public List<ShoppingCart> findAll() { return repository.findAll(); }
 
-    @Transactional
     public Optional<ShoppingCart> findById(int id) { return repository.findById(id); }
 
-    @Transactional
     public void save(ShoppingCart shoppingCart) {
         this.repository.save(shoppingCart);
     }
 
-    @Transactional
-    public void addProduct(Product product,Integer count,Integer id) {
-        Optional<ShoppingCart> shoppingCart = repository.findById(id);
-        if (shoppingCart.isPresent()){
-            shoppingCart.get().addItem(product,count);
-            this.repository.save(shoppingCart.get());
+    public void addProduct(ProductShoppingCartDTO productShoppingCartDTO) {
+        Optional<User> user = userRepository.findByEmail(productShoppingCartDTO.getUserEmail());
+        Optional<Product> product = productRepository.findById(productShoppingCartDTO.getIdProduct());
+        if (user.isPresent() && product.isPresent()){
+            ShoppingCart shoppingCart = user.get().getShoppingCart();
+            shoppingCart.addItem(product.get(), 1);
+            //repository.save(shoppingCart);
+            userRepository.save(user.get());
         }
-
     }
 
-    @Transactional
+    public ShoppingCart getUserShoppingCart(String userEmail) {
+        Optional<User> user = userRepository.findByEmail(userEmail);
+        if(user.isPresent()) {
+            ShoppingCart shoppingCart = user.get().getShoppingCart();
+            return shoppingCart;
+        }
+        else {
+            return new ShoppingCart();
+        }
+    }
+
     public void deleteById(int id) {
         repository.deleteById(id);
     }
