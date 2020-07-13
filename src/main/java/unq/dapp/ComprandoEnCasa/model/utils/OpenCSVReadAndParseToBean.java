@@ -2,8 +2,10 @@ package unq.dapp.ComprandoEnCasa.model.utils;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,11 +14,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class OpenCSVReadAndParseToBean {
-        private static final String SAMPLE_CSV_FILE_PATH = "C:\\Users\\Ramiro\\Desktop\\Productos.csv";
+        private static final String SAMPLE_CSV_FILE_PATH = ".\\Productos.csv";
 
-    public static List<CSVProduct> main(String[] args) throws IOException {
+    public static List<CSVProduct> main(MultipartFile csv) throws IOException {
         try (
-                Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE_PATH));
+                Reader reader = new InputStreamReader(csv.getInputStream());
         ) {
             CsvToBean<CSVProduct> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(CSVProduct.class)
