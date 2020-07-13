@@ -59,13 +59,17 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.getCategories());
     }
 
-    @PostMapping("/addBatch")
-    public void addProducts(@RequestParam MultipartFile file) throws IOException {
+    @PostMapping("/addBatch/{idCommerce}")
+    public void addProducts(@RequestParam MultipartFile file,@PathVariable Integer idCommerce) throws IOException {
         if (file.isEmpty()) {
             System.out.print("Esta vacio el file");
         } else {
             OpenCSVReadAndParseToBean openCSVReadAndParseToBean = new OpenCSVReadAndParseToBean();
             List<Product> productList = openCSVReadAndParseToBean.main(file);
-            productList.stream().forEach((product)->productService.save(product));
+            productList.stream().forEach((product) -> {
+                product.setCommerceId(idCommerce);
+                productService.save(product);
+            });
         }
-    }}
+    }
+}

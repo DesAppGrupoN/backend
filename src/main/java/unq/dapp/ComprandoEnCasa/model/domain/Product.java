@@ -59,4 +59,5 @@ public class Product {
 
     public Integer getCommerceId() { return commerceId; }
 
+    public void setCommerceId(Integer id) { this.commerceId = id; }
 }
