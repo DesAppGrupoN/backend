@@ -12,35 +12,6 @@ import static org.mockito.Mockito.when;
 public class ShoppingCartTest {
 
     @Test
-    public void addAndContainsItem() {
-        Integer amount = 1;
-        ShoppingCart shoppingCart = new ShoppingCart();
-        Product productMock = mock(Product.class);
-        shoppingCart.addItem(productMock, amount);
-        assertTrue(shoppingCart.containsItem(productMock));
-    }
-
-    @Test
-    public void addAndGetItem() {
-        Integer amount = 1;
-        ShoppingCart shoppingCart = new ShoppingCart();
-        Product productMock = mock(Product.class);
-        shoppingCart.addItem(productMock, amount);
-        assertEquals(amount, shoppingCart.getValue(productMock));
-    }
-
-    @Test
-    public void removeItem() {
-        Integer amount = 1;
-        ShoppingCart shoppingCart = new ShoppingCart();
-        Product productMock = mock(Product.class);
-        shoppingCart.addItem(productMock, amount);
-
-        shoppingCart.removeItem(productMock);
-        assertFalse(shoppingCart.containsItem(productMock));
-    }
-
-    @Test
     public void isEmpty() {
         ShoppingCart shoppingCart = new ShoppingCart();
         assertTrue(shoppingCart.isEmpty());

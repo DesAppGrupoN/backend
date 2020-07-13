@@ -1,49 +1,50 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class ShoppingCart {
 
     @Id
     @GeneratedValue
     private Integer id;
-    @ElementCollection
-    private Map<Product,Integer> cart ;
 
-    public ShoppingCart(){ this.cart=new HashMap<Product, Integer>();}
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CartElement> cart;
 
-    public void addItem(Product product, Integer ints){
-        this.cart.put(product,ints);
+    public ShoppingCart() { this.cart = new ArrayList<>(); }
+
+    public void addItem(Product product, Integer quantity) {
+        CartElement cartElement = new CartElement(product, quantity);
+        this.cart.add(cartElement);
     }
 
     public void removeItem(Product product) {
-        this.cart.remove(product);
+        this.cart.removeIf((elem) -> elem.getProduct().getId().equals(product.getId()));
+    }
+
+    public List<CartElement> getCart() { return this.cart; }
+
+    public void setShoppingCart(List<CartElement> cart) {
+        this.cart = cart;
     }
 
     public Boolean isEmpty(){
         return this.cart.isEmpty();
     }
 
-    public Boolean containsItem(Product product) {
-        return this.cart.containsKey(product);
-   }
-
-    public Integer getValue(Product product) {
-        return this.cart.get(product);
-   }
-
-    public void emptyCart() { this.cart= new HashMap<Product, Integer>(); }
+    public void emptyCart() { this.cart = new ArrayList<>(); }
 
     public Integer getTotalPrice() {
-        int total = 0;
-        for(Map.Entry<Product,Integer> entry : this.cart.entrySet()) {
-            Product product = entry.getKey();
-            Integer quantity = entry.getValue();
-
-            total += product.getPrice() * quantity;
+        if(!this.cart.isEmpty()) {
+            return this.cart.stream()
+                    .mapToInt(elem -> (elem.getTotal()))
+                    .sum();
         }
-        return total;
+        else {
+            return 0;
+        }
     }
 }

@@ -29,7 +29,8 @@ public class User {
     private List<Commerce> commerceList;
 
     @ElementCollection
-    private Map<LocalDate,ShoppingCart> purchaseHistory;
+    private List<ShoppingCart> purchaseHistory;
+
     private boolean statusNotifications;
     @Transient
     private SecretManager secretManager;
@@ -37,9 +38,8 @@ public class User {
     public User(){
         this.secretManager =  new SecretManager("secreto");
         shoppingCart = new ShoppingCart();
-        purchaseHistory = new HashMap<LocalDate, ShoppingCart>();
+        purchaseHistory = new ArrayList<>();
         statusNotifications = true;
-
     }
 
     public User(String username, String password){
@@ -59,6 +59,8 @@ public class User {
         this.name = name;
         this.lastName = lastName;
         this.commerceList = new ArrayList<>();
+        this.shoppingCart = new ShoppingCart();
+        this.purchaseHistory = new ArrayList<>();
     }
 
     public String getUsername() { return username; }
@@ -89,11 +91,11 @@ public class User {
 
     public void cleanShoppingCart() { this.shoppingCart.emptyCart();}
 
-    public void buyShoppingCart(ShoppingCart shoppingCart) { this.purchaseHistory.put(LocalDate.now(),shoppingCart);}
+    public List<ShoppingCart> getPurchaseHistory() { return purchaseHistory; }
 
-    public Map<LocalDate, ShoppingCart> getPurchaseHistory() { return purchaseHistory; }
+    public void setPurchaseHistory(List<ShoppingCart> purchaseHistory) { this.purchaseHistory = purchaseHistory; }
 
-    public void setPurchaseHistory(Map<LocalDate, ShoppingCart> purchaseHistory) { this.purchaseHistory = purchaseHistory; }
+    public void addToPurchaseHistory(ShoppingCart shoppingCart) { this.purchaseHistory.add(shoppingCart); }
 
     public boolean getStatusNotifications() { return statusNotifications; }
 

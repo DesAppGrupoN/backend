@@ -125,7 +125,7 @@ public class InitServiceInMemory {
 		Integer stockProduct3 = 4;
 		Integer priceProduct3 = 100;
 		String imageProduct3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4lZknniLgWZT9rQoYGxi5v_r3P5OV8ilA_9JpJiYJop0lbpoV&usqp=CAU";
-		Product product3= new Product(2,nameProduct3,categoryProduct3,brandProduct3,stockProduct3,priceProduct3,imageProduct3);
+		Product product3= new Product(3,nameProduct3,categoryProduct3,brandProduct3,stockProduct3,priceProduct3,imageProduct3);
 
 		//Product4
 		String nameProduct4 = "Sprite 3L";

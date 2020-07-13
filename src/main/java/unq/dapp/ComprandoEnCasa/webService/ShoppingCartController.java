@@ -5,12 +5,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
+import unq.dapp.ComprandoEnCasa.model.dtos.ProductShoppingCartDTO;
+import unq.dapp.ComprandoEnCasa.services.ProductService;
 import unq.dapp.ComprandoEnCasa.services.ShoppingCartService;
 
 import java.util.List;
 
 @RestController
-    @RequestMapping("/shoppingcart")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/shoppingcart")
 public class ShoppingCartController {
 
     @Autowired
@@ -22,10 +25,15 @@ public class ShoppingCartController {
         return ResponseEntity.ok().body(productsList);
     }
 
-    @PostMapping("/addProduct")
-    public void addProduct(@RequestBody Product product) { shoppingCartService.addProduct(product,1,1); }
+    @RequestMapping(value = "/get_user_shopping_cart/{userEmail}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserShoppingCart(@PathVariable String userEmail) {
+        ShoppingCart shoppingCart = shoppingCartService.getUserShoppingCart(userEmail);
+        return ResponseEntity.ok().body(shoppingCart);
+    }
 
-    @PostMapping("/add")
-    public void addShoppingCart(@RequestBody ShoppingCart shoppingService) { shoppingCartService.save(shoppingService); }
+    @PostMapping("/add_product")
+    public void addProduct(@RequestBody ProductShoppingCartDTO productShoppingCartDTO) { shoppingCartService.addProduct(productShoppingCartDTO); }
+
+
 
 }
