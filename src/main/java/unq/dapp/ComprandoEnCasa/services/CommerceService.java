@@ -30,13 +30,11 @@ public class CommerceService {
     public Optional<Commerce> findById(int id) { return repository.findById(id); }
 
     public void save(CommerceDTO commerceDTO) {
-
             Optional<User> user = userRepository.findByEmail(commerceDTO.getUserEmail());
             if (user.isPresent()) {
                 Commerce commerce = CommerceBuilder.aCommerce()
                         .withName(commerceDTO.getName())
                         .withAddress(commerceDTO.getAddress())
-                        .withAttentionSchedule(commerceDTO.getAttentionSchedule())
                         .withImage(commerceDTO.getImage())
                         .withMaDistance(commerceDTO.getMaxDistance())
                         .withPayMethods(commerceDTO.getPayMethods())
@@ -45,11 +43,9 @@ public class CommerceService {
                         .withAttentionSchedule(commerceDTO.getAttentionSchedule())
                         .withId(commerceDTO.getId())
                         .build();
-
                 user.get().addComerce(commerce);
                 userRepository.save(user.get());
             }
-
     }
 
     public List<Commerce> search(String search) {

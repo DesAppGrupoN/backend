@@ -4,8 +4,8 @@ import unq.dapp.ComprandoEnCasa.model.domain.commerce.AttentionSchedule;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.PayMethods;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Sector;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CommerceDTO {
 
@@ -17,7 +17,7 @@ public class CommerceDTO {
     private String image;
     private ArrayList<PayMethods> payMethods;
     private Integer maxDistance;
-    private AttentionSchedule attentionSchedule;
+    private AttentionScheduleDTO attentionScheduleDTO;
     private String userEmail;
 
     public CommerceDTO() { }
@@ -87,10 +87,18 @@ public class CommerceDTO {
     }
 
     public AttentionSchedule getAttentionSchedule() {
-        return attentionSchedule;
-    }
+        AttentionSchedule attentionSchedule = new AttentionSchedule();
+        attentionSchedule.setDays(this.attentionScheduleDTO.getDays());
+        String[] timesOpening = attentionScheduleDTO.getOpeningTime().split(":");
+        LocalTime openingTime = LocalTime.of(Integer.parseInt(timesOpening [0]), Integer.parseInt(timesOpening [1]));
+        attentionSchedule.setOpeningTime(openingTime);
+        String[] timesClosing = attentionScheduleDTO.getClosingTime().split(":");
+        LocalTime closingTime = LocalTime.of(Integer.parseInt(timesClosing[0]), Integer.parseInt(timesClosing[1]));
+        attentionSchedule.setClosingTime(closingTime);
 
-    public void setAttentionSchedule(AttentionSchedule attentionSchedule) { this.attentionSchedule = attentionSchedule; }
+        return attentionSchedule; }
+
+    public void setAttentionScheduleDTO(AttentionScheduleDTO attentionScheduleDTO) { this.attentionScheduleDTO = attentionScheduleDTO; }
 
     public String getUserEmail() {
         return userEmail;

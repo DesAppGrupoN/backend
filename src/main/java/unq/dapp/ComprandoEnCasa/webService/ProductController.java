@@ -3,6 +3,7 @@ package unq.dapp.ComprandoEnCasa.webService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.services.EmailService;
 import unq.dapp.ComprandoEnCasa.services.ProductService;
@@ -57,6 +58,6 @@ public class ProductController {
     }
 
     @PostMapping("/addBatch")
-    public void addProducts(@RequestBody String product) { System.out.println("ACA:" + product); }
+    public void addProducts(@RequestBody MultipartFile file) { System.out.print(file); }
 
 }

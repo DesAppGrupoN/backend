@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class OpencsvTest {
-@Test
+/*@Test
         public void testBuilder() throws IOException {
     String[] errorSoon = new String[100];
 
@@ -22,7 +22,6 @@ public class OpencsvTest {
      OpenCSVReadAndParseToBean open = new OpenCSVReadAndParseToBean();
     List<CSVProduct> res = open.main(errorSoon);
     Assertions.assertEquals(res.size(),3);
-
-
 }
+ */
 }
