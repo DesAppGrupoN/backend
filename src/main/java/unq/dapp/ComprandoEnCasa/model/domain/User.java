@@ -109,6 +109,10 @@ public class User {
         return commerceList;
     }
 
+    public void setCommerceList(List<Commerce> commerceList) {
+        this.commerceList = commerceList;
+    }
+
     public void addComerce(Commerce commerce) {
         if(commerceList.contains(commerce)) {
             commerceList.remove(commerce);
