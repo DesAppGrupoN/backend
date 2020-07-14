@@ -1,6 +1,7 @@
 package unq.dapp.ComprandoEnCasa.webService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +11,7 @@ import unq.dapp.ComprandoEnCasa.services.EmailService;
 import unq.dapp.ComprandoEnCasa.services.ProductService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,16 +62,19 @@ public class ProductController {
     }
 
     @PostMapping("/addBatch/{idCommerce}")
-    public void addProducts(@RequestParam MultipartFile file,@PathVariable Integer idCommerce) throws IOException {
+    public ResponseEntity<String> addProducts(@RequestParam MultipartFile file, @PathVariable Integer idCommerce) throws IOException {
         if (file.isEmpty()) {
-            System.out.print("Esta vacio el file");
+            return new ResponseEntity<>("El file esta vacio", HttpStatus.OK);
         } else {
             OpenCSVReadAndParseToBean openCSVReadAndParseToBean = new OpenCSVReadAndParseToBean();
             List<Product> productList = openCSVReadAndParseToBean.main(file);
+            List<String> productsName= new ArrayList<>();
             productList.stream().forEach((product) -> {
                 product.setCommerceId(idCommerce);
                 productService.save(product);
-            });
+                productsName.add(product.getName())  ; });
+                return new ResponseEntity<>(productsName.toString(), HttpStatus.OK);
+                }
+
         }
     }
-}
