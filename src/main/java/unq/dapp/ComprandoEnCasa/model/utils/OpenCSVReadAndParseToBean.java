@@ -8,14 +8,11 @@ import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class OpenCSVReadAndParseToBean {
-        private static final String SAMPLE_CSV_FILE_PATH = ".\\Productos.csv";
 
     public static List<Product> main(MultipartFile csv) throws IOException {
         try (
