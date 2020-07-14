@@ -41,7 +41,16 @@ public class ShoppingCartService {
         if (user.isPresent() && product.isPresent()){
             ShoppingCart shoppingCart = user.get().getShoppingCart();
             shoppingCart.addItem(product.get(), 1);
-            //repository.save(shoppingCart);
+            userRepository.save(user.get());
+        }
+    }
+
+    public void removeProduct(ProductShoppingCartDTO productShoppingCartDTO) {
+        Optional<User> user = userRepository.findByEmail(productShoppingCartDTO.getUserEmail());
+        Optional<Product> product = productRepository.findById(productShoppingCartDTO.getIdProduct());
+        if (user.isPresent() && product.isPresent()){
+            ShoppingCart shoppingCart = user.get().getShoppingCart();
+            shoppingCart.removeItem(product.get());
             userRepository.save(user.get());
         }
     }

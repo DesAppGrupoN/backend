@@ -2,6 +2,7 @@ package unq.dapp.ComprandoEnCasa.model.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,14 @@ public class ShoppingCart {
     }
 
     public void removeItem(Product product) {
-        this.cart.removeIf((elem) -> elem.getProduct().getId().equals(product.getId()));
+        Iterator<CartElement> i = this.cart.iterator();
+        while(i.hasNext()) {
+            CartElement element = i.next();
+            if(element.getProduct().getId() == product.getId()) {
+                this.cart.remove(element);
+                break;
+            }
+        }
     }
 
     public List<CartElement> getCart() { return this.cart; }

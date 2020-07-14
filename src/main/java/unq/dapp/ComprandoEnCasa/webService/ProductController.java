@@ -23,15 +23,8 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private EmailService emailService;
-
     @RequestMapping(value = "/get_all", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
-        try {
-            emailService.sendNotificaitoin();
-        }
-        catch (Exception e) {}
         List<Product> productsList = productService.findAll();
         return ResponseEntity.ok().body(productsList);
     }

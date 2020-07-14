@@ -34,6 +34,8 @@ public class ShoppingCartController {
     @PostMapping("/add_product")
     public void addProduct(@RequestBody ProductShoppingCartDTO productShoppingCartDTO) { shoppingCartService.addProduct(productShoppingCartDTO); }
 
+    @PostMapping("/remove_product")
+    public void removeProduct(@RequestBody ProductShoppingCartDTO productShoppingCartDTO) { shoppingCartService.removeProduct(productShoppingCartDTO); }
 
 
 }
