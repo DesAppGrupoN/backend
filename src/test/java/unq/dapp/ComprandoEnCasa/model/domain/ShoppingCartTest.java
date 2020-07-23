@@ -19,10 +19,9 @@ public class ShoppingCartTest {
 
     @Test
     public void cleanCart() {
-        Integer amount = 1;
         ShoppingCart shoppingCart = new ShoppingCart();
         Product productMock = mock(Product.class);
-        shoppingCart.addItem(productMock, amount);
+        shoppingCart.addItem(productMock);
         assertFalse(shoppingCart.isEmpty());
         shoppingCart.emptyCart();
         assertTrue(shoppingCart.isEmpty());
@@ -33,18 +32,19 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart();
         Product product1 = mock(Product.class);
         Integer priceProduct1 = 100;
-        Integer quantityProduct1 = 1;
         Product product2 = mock(Product.class);
         Integer priceProduct2 = 200;
-        Integer quantityProduct2 = 2;
 
         when(product1.getPrice()).thenReturn(priceProduct1);
         when(product2.getPrice()).thenReturn(priceProduct2);
 
-        Integer totalExpected = priceProduct1 * quantityProduct1 + priceProduct2 * quantityProduct2;
+        when(product1.getId()).thenReturn(1);
+        when(product2.getId()).thenReturn(2);
 
-        shoppingCart.addItem(product1, quantityProduct1);
-        shoppingCart.addItem(product2, quantityProduct2);
+        Integer totalExpected = priceProduct1 + priceProduct2;
+
+        shoppingCart.addItem(product1);
+        shoppingCart.addItem(product2);
 
         assertEquals(totalExpected, shoppingCart.getTotalPrice());
     }

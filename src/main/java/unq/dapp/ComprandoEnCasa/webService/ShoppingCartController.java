@@ -38,4 +38,7 @@ public class ShoppingCartController {
     public void removeProduct(@RequestBody ProductShoppingCartDTO productShoppingCartDTO) { shoppingCartService.removeProduct(productShoppingCartDTO); }
 
 
+    @PostMapping("/change_quantity")
+    public void changeProductQuantity(@RequestBody ProductShoppingCartDTO productShoppingCartDTO) { shoppingCartService.changeProductQuantity(productShoppingCartDTO); }
+
 }

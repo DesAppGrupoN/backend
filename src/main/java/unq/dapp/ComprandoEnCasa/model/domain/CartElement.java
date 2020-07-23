@@ -41,4 +41,12 @@ public class CartElement {
     public Integer getTotal() {
         return this.product.getPrice() * this.quantity;
     }
+
+    public void increseQuantity() {
+        this.quantity += 1;
+    }
+
+    public void decreaseQuantity() {
+        this.quantity -= 1;
+    }
 }

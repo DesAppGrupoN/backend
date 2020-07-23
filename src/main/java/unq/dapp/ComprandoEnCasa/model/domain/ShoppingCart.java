@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class ShoppingCart {
@@ -17,9 +18,16 @@ public class ShoppingCart {
 
     public ShoppingCart() { this.cart = new ArrayList<>(); }
 
-    public void addItem(Product product, Integer quantity) {
-        CartElement cartElement = new CartElement(product, quantity);
-        this.cart.add(cartElement);
+    public void addItem(Product product) {
+        Optional<CartElement> cartElement = this.findCartElement(product);
+
+        if(cartElement.isPresent()) {
+            cartElement.get().increseQuantity();
+        }
+        else {
+            CartElement newCartElement = new CartElement(product, 1);
+            this.cart.add(newCartElement);
+        }
     }
 
     public void removeItem(Product product) {
@@ -31,6 +39,12 @@ public class ShoppingCart {
                 break;
             }
         }
+    }
+
+    public Optional<CartElement> findCartElement(Product product) {
+        return this.cart.stream()
+                .filter(cartElement -> cartElement.getProduct().getId().equals(product.getId()))
+                .findFirst();
     }
 
     public List<CartElement> getCart() { return this.cart; }
@@ -53,6 +67,14 @@ public class ShoppingCart {
         }
         else {
             return 0;
+        }
+    }
+
+    public void changeQuantity(Product product, Integer quantity) {
+        Optional<CartElement> cartElement = this.findCartElement(product);
+        
+        if(cartElement.isPresent()) {
+            cartElement.get().setQuantity(quantity);
         }
     }
 }

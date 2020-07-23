@@ -87,7 +87,7 @@ public class User {
 
     public void setShoppingCart(ShoppingCart shoppingCart) { this.shoppingCart = shoppingCart; }
 
-    public void addToCart(Product product, int i) { this.shoppingCart.addItem(product,i); }
+    public void addToCart(Product product) { this.shoppingCart.addItem(product); }
 
     public void cleanShoppingCart() { this.shoppingCart.emptyCart();}
 

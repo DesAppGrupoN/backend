@@ -40,7 +40,7 @@ public class ShoppingCartService {
         Optional<Product> product = productRepository.findById(productShoppingCartDTO.getIdProduct());
         if (user.isPresent() && product.isPresent()){
             ShoppingCart shoppingCart = user.get().getShoppingCart();
-            shoppingCart.addItem(product.get(), 1);
+            shoppingCart.addItem(product.get());
             userRepository.save(user.get());
         }
     }
@@ -63,6 +63,16 @@ public class ShoppingCartService {
         }
         else {
             return new ShoppingCart();
+        }
+    }
+
+    public void changeProductQuantity(ProductShoppingCartDTO productShoppingCartDTO) {
+        Optional<User> user = userRepository.findByEmail(productShoppingCartDTO.getUserEmail());
+        Optional<Product> product = productRepository.findById(productShoppingCartDTO.getIdProduct());
+        if (user.isPresent() && product.isPresent()){
+            ShoppingCart shoppingCart = user.get().getShoppingCart();
+            shoppingCart.changeQuantity(product.get(), productShoppingCartDTO.getQuantity());
+            userRepository.save(user.get());
         }
     }
 

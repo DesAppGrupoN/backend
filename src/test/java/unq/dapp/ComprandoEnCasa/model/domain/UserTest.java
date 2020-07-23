@@ -35,9 +35,9 @@ public class UserTest {
         Product productMock = mock(Product.class);
 
         user.setShoppingCart(shoppingCartMock);
-        user.addToCart(productMock, 1);
+        user.addToCart(productMock);
 
-        verify(shoppingCartMock, times(1)).addItem(productMock, 1);
+        verify(shoppingCartMock, times(1)).addItem(productMock);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class UserTest {
         Product productMock = mock(Product.class);
 
         user.setShoppingCart(shoppingCartMock);
-        user.addToCart(productMock, 1);
+        user.addToCart(productMock);
         user.cleanShoppingCart();
         verify(shoppingCartMock, times(1)).emptyCart();
     }

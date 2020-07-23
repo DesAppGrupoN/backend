@@ -4,6 +4,7 @@ public class ProductShoppingCartDTO {
 
     private Integer idProduct;
     private String userEmail;
+    private Integer quantity;
 
     public ProductShoppingCartDTO() { }
 
@@ -22,5 +23,13 @@ public class ProductShoppingCartDTO {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
