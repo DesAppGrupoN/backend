@@ -10,6 +10,7 @@ import unq.dapp.ComprandoEnCasa.model.utils.OpenCSVReadAndParseToBean;
 import unq.dapp.ComprandoEnCasa.services.EmailService;
 import unq.dapp.ComprandoEnCasa.services.ProductService;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,10 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public void addProduct(@RequestBody Product product) { productService.save(product); }
+    public ResponseEntity<String> addProduct(@Valid @RequestBody Product product) {
+        productService.save(product);
+        return ResponseEntity.ok("Product is valid");
+    }
 
     @RequestMapping(value = "/delete/{productId}", method = RequestMethod.GET)
     public void delete(@PathVariable int productId) {
@@ -55,7 +59,7 @@ public class ProductController {
     }
 
     @PostMapping("/addBatch/{idCommerce}")
-    public ResponseEntity<String> addProducts(@RequestParam MultipartFile file, @PathVariable Integer idCommerce) throws IOException {
+    public ResponseEntity<String> addProducts(@Valid @RequestParam MultipartFile file, @PathVariable Integer idCommerce) throws IOException {
         if (file.isEmpty()) {
             return new ResponseEntity<>("El file esta vacio", HttpStatus.OK);
         } else {
