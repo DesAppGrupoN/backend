@@ -1,13 +1,17 @@
 package unq.dapp.ComprandoEnCasa.webService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.model.dtos.CommerceDTO;
 import unq.dapp.ComprandoEnCasa.services.CommerceService;
 
-import javax.validation.Valid;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +22,6 @@ public class CommerceController {
 
     @Autowired
     private CommerceService commerceService;
-    private MyResourceNotFoundException myResourceNotFoundException= new MyResourceNotFoundException();
 
     @RequestMapping(value = "/get_all", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
@@ -33,9 +36,23 @@ public class CommerceController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addCommerce(@Valid @RequestBody CommerceDTO commerceDTO) {
-        commerceService.save(commerceDTO);
-        return ResponseEntity.ok("Commerce is valid");
+    public ResponseEntity<String> addCommerce(@RequestBody CommerceDTO commerceDTO) {
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+        LocalTime openingTime = commerceDTO.getAttentionSchedule().getOpeningTime();
+        LocalTime closingTime = commerceDTO.getAttentionSchedule().getClosingTime();
+        List<DayOfWeek> openingDays = commerceDTO.getAttentionSchedule().getDays();
+
+        if( openingTime.isBefore(closingTime) && openingDays.size()>0) {
+            commerceService.save(commerceDTO);
+            return ResponseEntity.ok("Commerce is valid");
+        }
+        else {
+            return new ResponseEntity<String>(
+                    "Please, verify that the data is correct",
+                    headers,
+                    HttpStatus.BAD_REQUEST
+            );
+        }
     }
 
     @PostMapping(value = "/delete")
