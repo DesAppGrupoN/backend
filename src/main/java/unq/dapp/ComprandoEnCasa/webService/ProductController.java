@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
+import unq.dapp.ComprandoEnCasa.model.dtos.ProductDTO;
 import unq.dapp.ComprandoEnCasa.model.utils.OpenCSVReadAndParseToBean;
 import unq.dapp.ComprandoEnCasa.services.EmailService;
 import unq.dapp.ComprandoEnCasa.services.ProductService;
@@ -37,7 +38,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addProduct(@Valid @RequestBody Product product) {
+    public ResponseEntity<String> addProduct(@Valid @RequestBody ProductDTO product) {
         productService.save(product);
         return ResponseEntity.ok("Product is valid");
     }
@@ -64,7 +65,7 @@ public class ProductController {
             return new ResponseEntity<>("El file esta vacio", HttpStatus.OK);
         } else {
             OpenCSVReadAndParseToBean openCSVReadAndParseToBean = new OpenCSVReadAndParseToBean();
-            List<Product> productList = openCSVReadAndParseToBean.main(file);
+            List<ProductDTO> productList = openCSVReadAndParseToBean.main(file);
             List<String> productsName= new ArrayList<>();
             productList.stream().forEach((product) -> {
                 product.setCommerceId(idCommerce);

@@ -3,8 +3,13 @@ package unq.dapp.ComprandoEnCasa.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import unq.dapp.ComprandoEnCasa.model.builders.CommerceBuilder;
+import unq.dapp.ComprandoEnCasa.model.builders.ProductBuilder;
 import unq.dapp.ComprandoEnCasa.model.domain.Category;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
+import unq.dapp.ComprandoEnCasa.model.domain.User;
+import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.ComprandoEnCasa.model.dtos.ProductDTO;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.ProductRepository;
 
 import java.util.List;
@@ -23,9 +28,20 @@ public class ProductService {
     public Optional<Product> findById(int id) { return repository.findById(id); }
 
     @Transactional
-    public void save(Product product) {
-        this.repository.save(product);
-    }
+    public void save(ProductDTO productDTO) {
+            Product product = ProductBuilder.aProduct()
+                    .withName(productDTO.getName())
+                    .withBrand(productDTO.getBrand())
+                    .withCategory(productDTO.getCategory())
+                    .withStock(productDTO.getStock())
+                    .withImage(productDTO.getImage())
+                    .withPrice(productDTO.getPrice())
+                    .withId(productDTO.getId())
+                    .withCommerceId((productDTO.getCommerceId()))
+                    .build();
+            repository.save(product);
+        }
+
 
     @Transactional
     public void deleteById(int id) {

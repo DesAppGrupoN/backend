@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.web.multipart.MultipartFile;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
+import unq.dapp.ComprandoEnCasa.model.dtos.ProductDTO;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,19 +15,19 @@ import java.util.List;
 
 public class OpenCSVReadAndParseToBean {
 
-    public static List<Product> main(MultipartFile csv) throws IOException {
+    public static List<ProductDTO> main(MultipartFile csv) throws IOException {
         try (
                 Reader reader = new InputStreamReader(csv.getInputStream());
         ) {
-            CsvToBean<Product> csvToBean = new CsvToBeanBuilder(reader)
-                    .withType(Product.class)
+            CsvToBean<ProductDTO> csvToBean = new CsvToBeanBuilder(reader)
+                    .withType(ProductDTO.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
 
-            Iterator<Product> csvProductIterator = csvToBean.iterator();
-            List<Product> result = new ArrayList<>();
+            Iterator<ProductDTO> csvProductIterator = csvToBean.iterator();
+            List<ProductDTO> result = new ArrayList<>();
             while (csvProductIterator.hasNext()) {
-                Product csvProduct = csvProductIterator.next();
+                ProductDTO csvProduct = csvProductIterator.next();
                 result.add(csvProduct);
                 System.out.println("Name : " + csvProduct.getName());
                 System.out.println("Category : " + csvProduct.getCategory());
