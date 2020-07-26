@@ -1,6 +1,10 @@
 package unq.dapp.ComprandoEnCasa.model.domain.commerce;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -9,14 +13,14 @@ public class Commerce {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     private String description;
 
     @Enumerated(EnumType.STRING)
     private Sector sector;
-
+    @NotBlank(message = "Address is mandatory")
     private String address;
 
     private String image;
@@ -25,6 +29,8 @@ public class Commerce {
     @CollectionTable
     @Enumerated(EnumType.STRING)
     private List<PayMethods> payMethods;
+    @NotNull(message = "maxDistance is mandatory")
+    @Range(min = 0)
     private Integer maxDistance;
 
     @OneToOne(cascade = CascadeType.ALL)
