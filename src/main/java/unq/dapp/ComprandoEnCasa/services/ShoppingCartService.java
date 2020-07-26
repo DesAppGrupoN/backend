@@ -159,16 +159,6 @@ public class ShoppingCartService {
             String buyer = userBuyer.getEmail();
             List<String> productNames = shoppingCart.getCart().stream().filter(it -> it.getProduct().getCommerceId().equals(commerce.getId())).map(CartElement::getProduct).map(Product::getName).collect(Collectors.toList());
 
-            System.out.println("-----------------------------------------------");
-            System.out.println("ID COMERCIO: " + commerce.getId());
-            System.out.println("SIZE DEL CARRITO: " + shoppingCart.getCart().size());
-            System.out.println("LISTA INICIAL DE CARRITO: " + shoppingCart.getCart().toString());
-            System.out.println("LISTA FILTRADA DE PRODUCTOS: " + shoppingCart.getCart().stream().filter(it -> it.getProduct().getCommerceId().equals(commerce.getId())).toString());
-            System.out.println("LISTA DE PRODUCTOS: " + shoppingCart.getCart().stream().filter(it -> it.getProduct().getCommerceId().equals(commerce.getId())).map(CartElement::getProduct).toString());
-            System.out.println("LISTA DE NOMBRES: " + shoppingCart.getCart().stream().filter(it -> it.getProduct().getCommerceId().equals(commerce.getId())).map(CartElement::getProduct).map(Product::getName).toString());
-            System.out.println("-----------------------------------------------");
-
-
             ShipmentTypeEnum shipmentType = turn.getShipment();
             String shipmentTurn = "";
 
