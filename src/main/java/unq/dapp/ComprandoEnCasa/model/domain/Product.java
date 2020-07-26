@@ -18,7 +18,6 @@ public class Product {
     private Integer id;
     @NotBlank(message = "name is mandatory")
     private String name;
-    @NotNull(message = "Category is mandatory")
     private Category category;
     private String brand;
     @NotNull(message = "Stock is mandatory")
