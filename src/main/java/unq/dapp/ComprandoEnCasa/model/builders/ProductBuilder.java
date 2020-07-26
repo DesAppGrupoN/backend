@@ -5,7 +5,8 @@ import unq.dapp.ComprandoEnCasa.model.domain.Category;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 
 public class ProductBuilder {
-
+    private Integer commerceId ;
+    private Integer id ;
     private String name ;
     private Category category ;
     private String brand ;
@@ -18,12 +19,15 @@ public class ProductBuilder {
     }
 
     public ProductBuilder(){
+        this.commerceId = null;
+        this.id = null;
         this.name = "not name";
         this.category= Category.CLEANING;
         this.brand = "not brand";
         this.stock = 0;
         this.price = 0;
         this.image = "";
+
     }
 
 
@@ -36,6 +40,12 @@ public class ProductBuilder {
         product.setPrice(price);
         product.setImage(image);
 
+        if(this.id != null) {
+            product.setId(this.id);
+        }
+        if(this.commerceId != null) {
+            product.setCommerceId(this.commerceId);
+        }
         return product;
     }
 
@@ -67,5 +77,12 @@ public class ProductBuilder {
         this.category = category;
         return this;
     }
-
+    public ProductBuilder withId(Integer id) {
+        this.id = id;
+        return this;
+    }
+    public ProductBuilder withCommerceId(Integer commerceId) {
+        this.commerceId = commerceId;
+        return this;
+    }
 }

@@ -18,7 +18,6 @@ public class CommerceController {
 
     @Autowired
     private CommerceService commerceService;
-    private MyResourceNotFoundException myResourceNotFoundException= new MyResourceNotFoundException();
 
     @RequestMapping(value = "/get_all", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {

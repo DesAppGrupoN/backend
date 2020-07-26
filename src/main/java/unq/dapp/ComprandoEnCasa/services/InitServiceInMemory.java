@@ -15,6 +15,7 @@ import unq.dapp.ComprandoEnCasa.model.domain.commerce.AttentionSchedule;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.PayMethods;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Sector;
+import unq.dapp.ComprandoEnCasa.model.dtos.ProductDTO;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -29,8 +30,6 @@ public class InitServiceInMemory {
 	@Value("${pring.datasource.driverClassName:NONE}")
 	private String className;
 
-	@Autowired
-	private CommerceService commerceService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -99,7 +98,14 @@ public class InitServiceInMemory {
 	}
 
 	private void createNewProduct(String name, Category category, String brand, Integer stock, Integer price, String image, Integer id_commerce) {
-		Product product = new Product(id_commerce, name, category, brand, stock, price, image);
+		ProductDTO product = new ProductDTO();
+		product.setName(name);
+		product.setCategory(category);
+		product.setBrand(brand);
+		product.setStock(stock);
+		product.setPrice(price);
+		product.setImage(image);
+		product.setCommerceId(id_commerce);
 		productService.save(product);
 	}
 }

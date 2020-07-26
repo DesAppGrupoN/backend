@@ -18,7 +18,6 @@ public class Product {
     private Integer id;
     @NotBlank(message = "name is mandatory")
     private String name;
-    @NotNull(message = "Category is mandatory")
     private Category category;
     private String brand;
     @NotNull(message = "Stock is mandatory")
@@ -28,7 +27,6 @@ public class Product {
     @Range(min = 0)
     private Integer price;
     private String image;
-
     public Product() { }
 
     public Product(Integer commerceId, String name, Category category, String brand, Integer stock, Integer price, String image){
@@ -40,6 +38,8 @@ public class Product {
         this.price = price;
         this.image = image;
     }
+
+    public void setId(Integer id) { this.id = id; }
 
     public String getName() { return name; }
 

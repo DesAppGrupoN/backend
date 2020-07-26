@@ -1,10 +1,6 @@
 package unq.dapp.ComprandoEnCasa.model.domain.commerce;
 
-
-import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Range;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -17,14 +13,12 @@ public class Commerce {
     @Id
     @GeneratedValue
     private int id;
-
     @NotBlank(message = "Name is mandatory")
     private String name;
 
     private String description;
 
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "sector is mandatory")
     private Sector sector;
     @NotBlank(message = "Address is mandatory")
     private String address;
