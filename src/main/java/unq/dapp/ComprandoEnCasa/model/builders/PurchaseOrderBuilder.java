@@ -4,13 +4,14 @@ package unq.dapp.ComprandoEnCasa.model.builders;
 import unq.dapp.ComprandoEnCasa.model.domain.PurchaseOrder;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
 import unq.dapp.ComprandoEnCasa.model.domain.shipment.ShipmentType;
+import unq.dapp.ComprandoEnCasa.model.domain.shipment.ShipmentTypeEnum;
 
 import java.time.LocalDate;
 
 public class PurchaseOrderBuilder {
 
     private ShoppingCart shoppingCart ;
-    private ShipmentType shipmentType;
+    private ShipmentTypeEnum shipmentType;
     private LocalDate date;
 
     public static PurchaseOrderBuilder aPurchaseOrder() {
@@ -19,7 +20,7 @@ public class PurchaseOrderBuilder {
 
     public PurchaseOrderBuilder(){
         this.shoppingCart = new ShoppingCart();
-        this.shipmentType = new ShipmentType() {};
+        this.shipmentType = ShipmentTypeEnum.DELIVERY;
         this.date = LocalDate.now();
 
     }
@@ -37,7 +38,7 @@ public class PurchaseOrderBuilder {
         return this;
     }
 
-    public PurchaseOrderBuilder withShipmentType(ShipmentType shipmentType) {
+    public PurchaseOrderBuilder withShipmentType(ShipmentTypeEnum shipmentType) {
         this.shipmentType = shipmentType;
         return this;
     }

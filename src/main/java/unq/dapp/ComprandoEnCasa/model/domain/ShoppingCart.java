@@ -1,10 +1,8 @@
 package unq.dapp.ComprandoEnCasa.model.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class ShoppingCart {
@@ -72,9 +70,20 @@ public class ShoppingCart {
 
     public void changeQuantity(Product product, Integer quantity) {
         Optional<CartElement> cartElement = this.findCartElement(product);
-        
+
         if(cartElement.isPresent()) {
             cartElement.get().setQuantity(quantity);
         }
+    }
+
+    public List<Integer> getCommercesId() {
+        return new ArrayList<>(
+                new HashSet<>(
+                        this.cart.stream()
+                                .map(CartElement::getProduct)
+                                .map(Product::getCommerceId)
+                                .collect(Collectors.toList())
+                )
+        );
     }
 }

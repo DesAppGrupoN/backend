@@ -42,9 +42,12 @@ public class Commerce {
     @OneToOne(cascade = CascadeType.ALL)
     private AttentionSchedule attentionSchedule;
 
+    @NotNull(message = "userEmail is mandatory")
+    private String userEmail;
+
     public Commerce() { }
 
-    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance,AttentionSchedule attentionSchedule) {
+    public Commerce(String name,String description,Sector sector, String address,String image, List<PayMethods> payMethods, Integer maxDistance,AttentionSchedule attentionSchedule, String userEmail) {
         this.name = name;
         this.description = description;
         this.sector = sector;
@@ -53,6 +56,7 @@ public class Commerce {
         this.payMethods = payMethods;
         this.maxDistance = maxDistance;
         this.attentionSchedule = attentionSchedule;
+        this.userEmail = userEmail;
     }
 
     @Override
@@ -118,5 +122,13 @@ public class Commerce {
 
     public void setAttentionSchedule(AttentionSchedule attentionSchedule) {
         this.attentionSchedule = attentionSchedule;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

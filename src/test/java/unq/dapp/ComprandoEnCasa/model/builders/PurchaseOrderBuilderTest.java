@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import unq.dapp.ComprandoEnCasa.model.domain.PurchaseOrder;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
 import unq.dapp.ComprandoEnCasa.model.domain.shipment.ShipmentType;
+import unq.dapp.ComprandoEnCasa.model.domain.shipment.ShipmentTypeEnum;
+
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -28,7 +30,7 @@ public class PurchaseOrderBuilderTest {
 
     @Test
     public void withShipmentType() {
-        ShipmentType shipmentType = mock(ShipmentType.class);
+        ShipmentTypeEnum shipmentType = ShipmentTypeEnum.DELIVERY;
         PurchaseOrder purchaseOrder = PurchaseOrderBuilder.aPurchaseOrder().withShipmentType(shipmentType).build();
 
         assertEquals(shipmentType, purchaseOrder.getShipmentType());

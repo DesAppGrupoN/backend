@@ -19,12 +19,13 @@ public class EmailService {
     }
 
     @Async
-    public void sendNotificaitoin() throws MailException, InterruptedException {
+    public void sendNotificaitoin(String to, String subject, String message) throws MailException, InterruptedException {
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo("");
-        mail.setFrom("");
-        mail.setSubject("Nuevo email");
-        mail.setText("Test");
+        mail.setTo(to);
+        mail.setFrom("grupondes@gmail.com");
+        mail.setSubject(subject);
+        mail.setText(message);
+
         javaMailSender.send(mail);
     }
 

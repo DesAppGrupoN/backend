@@ -28,8 +28,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Commerce> commerceList;
 
-    @ElementCollection
-    private List<ShoppingCart> purchaseHistory;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<PurchaseOrder> purchaseHistory;
 
     private boolean statusNotifications;
     @Transient
@@ -91,11 +91,11 @@ public class User {
 
     public void cleanShoppingCart() { this.shoppingCart.emptyCart();}
 
-    public List<ShoppingCart> getPurchaseHistory() { return purchaseHistory; }
+    public List<PurchaseOrder> getPurchaseHistory() { return purchaseHistory; }
 
-    public void setPurchaseHistory(List<ShoppingCart> purchaseHistory) { this.purchaseHistory = purchaseHistory; }
+    public void setPurchaseHistory(List<PurchaseOrder> purchaseHistory) { this.purchaseHistory = purchaseHistory; }
 
-    public void addToPurchaseHistory(ShoppingCart shoppingCart) { this.purchaseHistory.add(shoppingCart); }
+    public void addToPurchaseHistory(PurchaseOrder purchaseOrder) { this.purchaseHistory.add(purchaseOrder); }
 
     public boolean getStatusNotifications() { return statusNotifications; }
 

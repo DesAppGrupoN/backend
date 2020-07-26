@@ -7,6 +7,8 @@ public class Delivery extends ShipmentType {
     private Integer distance;
     private LocalDate shippingDate;
 
+    public Delivery() { }
+
     public String getShippingAddress() {
         return shippingAddress;
     }

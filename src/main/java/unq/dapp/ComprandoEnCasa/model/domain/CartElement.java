@@ -49,4 +49,8 @@ public class CartElement {
     public void decreaseQuantity() {
         this.quantity -= 1;
     }
+
+    public boolean isValid() {
+        return quantity <= product.getStock();
+    }
 }

@@ -21,6 +21,7 @@ public class CommerceBuilder {
     private List<PayMethods> payMethods;
     private Integer maxDistance;
     private AttentionSchedule attentionSchedule;
+    private String userEmail;
 
     public static CommerceBuilder aCommerce() {
         return new CommerceBuilder();
@@ -36,6 +37,7 @@ public class CommerceBuilder {
         this.payMethods = new ArrayList<PayMethods>();
         this.maxDistance = 0;
         this.attentionSchedule = new AttentionSchedule();
+        this.userEmail = "email";
 
     }
     public Commerce build() {
@@ -48,6 +50,7 @@ public class CommerceBuilder {
         commerce.setPayMethods(this.payMethods);
         commerce.setMaxDistance(this.maxDistance);
         commerce.setAttentionSchedule(this.attentionSchedule);
+        commerce.setUserEmail(this.userEmail);
 
         if(this.id != null) {
             commerce.setId(this.id);
@@ -97,6 +100,11 @@ public class CommerceBuilder {
 
     public CommerceBuilder withId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public CommerceBuilder withUserEmail(String email) {
+        this.userEmail = email;
         return this;
     }
 

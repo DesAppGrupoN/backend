@@ -47,7 +47,7 @@ public class InitServiceInMemory {
 
 		String usernameUser1 = "ramiro";
 		String passwordUser1 = "12345";
-		String emailUser1 = "ramiro@gmail.com";
+		String emailUser1 = "reekremag@gmail.com";
 		String nameUser1 = "Ramiro";
 		String lastNameUser1 = "userLastName1";
 		User user1 = new User(usernameUser1, passwordUser1, emailUser1, nameUser1, lastNameUser1);
@@ -91,7 +91,7 @@ public class InitServiceInMemory {
 		List<DayOfWeek> days = new ArrayList<DayOfWeek>() {{add(DayOfWeek.MONDAY); add(DayOfWeek.TUESDAY); add(DayOfWeek.WEDNESDAY); add(DayOfWeek.THURSDAY); add(DayOfWeek.FRIDAY);}};
 		AttentionSchedule attentionSchedule = new AttentionSchedule(days, LocalTime.of(9, 0), (LocalTime.of(17,0)));
 
-		Commerce commerce = new Commerce(name, description, sector, address, image, payMethods, maxDistance,attentionSchedule);
+		Commerce commerce = new Commerce(name, description, sector, address, image, payMethods, maxDistance, attentionSchedule, user.getEmail());
 
 		List<Commerce> newCommerceList = user.getCommerceList();
 		newCommerceList.add(commerce);

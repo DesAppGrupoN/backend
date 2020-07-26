@@ -7,6 +7,8 @@ public class OnSite extends ShipmentType {
 
     private Turn turn;
 
+    public OnSite() { }
+
     public Turn getTurn() {
         return turn;
     }

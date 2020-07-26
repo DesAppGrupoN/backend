@@ -17,11 +17,12 @@ public class CommerceTest {
         Sector sector = Sector.FOOD;
         String address = "address";
         String image = "image";
+        String userEmail = "email";
         ArrayList<PayMethods> payMethods = new ArrayList<PayMethods>();
         Integer maxDistance = 100;
         AttentionSchedule attentionSchedule = new AttentionSchedule();
 
-        Commerce commerce = new Commerce(name,description,sector, address,image, payMethods, maxDistance,attentionSchedule);
+        Commerce commerce = new Commerce(name, description, sector, address, image, payMethods, maxDistance, attentionSchedule, userEmail);
 
         assertEquals(name, commerce.getName());
         assertEquals(description, commerce.getDescription());
@@ -30,6 +31,7 @@ public class CommerceTest {
         assertEquals(image, commerce.getImage());
         assertEquals(payMethods, commerce.getPayMethods());
         assertEquals(maxDistance, commerce.getMaxDistance());
+        assertEquals(userEmail, commerce.getUserEmail());
     }
 
 }

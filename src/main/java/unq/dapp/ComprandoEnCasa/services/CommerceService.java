@@ -41,6 +41,7 @@ public class CommerceService {
                         .withSector(commerceDTO.getSector())
                         .withDescription(commerceDTO.getDescription())
                         .withAttentionSchedule(commerceDTO.getAttentionSchedule())
+                        .withUserEmail(commerceDTO.getUserEmail())
                         .withId(commerceDTO.getId())
                         .build();
                 user.get().addComerce(commerce);

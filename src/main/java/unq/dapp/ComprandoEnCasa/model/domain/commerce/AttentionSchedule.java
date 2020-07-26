@@ -67,26 +67,29 @@ public class AttentionSchedule {
         this.turns = turns;
     }
 
-    public List<LocalTime> getTurnsForDay(DayOfWeek day) {
+    public List<LocalTime> getTurnsForDay() {
         List<LocalTime> turns = new ArrayList<LocalTime>();
         LocalTime hour = this.openingTime;
         long hours = this.openHours();
         LocalTime hourClosing = this.closingTime;
-        for (int i = -1; i < hours * 2; ++i)
-            if (hour.isBefore(hourClosing) || hour.equals(hourClosing)) {
+        for (int i = -1; i < hours * 2; ++i) {
+            if (hour.isBefore(hourClosing)) {
                 turns.add(hour);
                 hour = hour.plusMinutes(30);
             }
+        }
+
+
 
         return turns;
     }
 
     public long openHours() { return this.openingTime.until(this.closingTime, ChronoUnit.HOURS); }
 
-
     public void assignTurn(Turn turn) {
         this.turns.add(turn);
     }
+
     public void removeTurn(Turn turn) {
         this.turns.remove(turn);
     }

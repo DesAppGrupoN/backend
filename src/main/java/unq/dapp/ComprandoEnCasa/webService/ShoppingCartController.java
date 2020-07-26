@@ -5,10 +5,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.dapp.ComprandoEnCasa.model.domain.Product;
 import unq.dapp.ComprandoEnCasa.model.domain.ShoppingCart;
+import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.ComprandoEnCasa.model.domain.commerce.PayMethods;
 import unq.dapp.ComprandoEnCasa.model.dtos.ProductShoppingCartDTO;
+import unq.dapp.ComprandoEnCasa.model.dtos.PurchaseDTO;
 import unq.dapp.ComprandoEnCasa.services.ProductService;
 import unq.dapp.ComprandoEnCasa.services.ShoppingCartService;
 
+import javax.validation.Valid;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -40,5 +45,28 @@ public class ShoppingCartController {
 
     @PostMapping("/change_quantity")
     public void changeProductQuantity(@RequestBody ProductShoppingCartDTO productShoppingCartDTO) { shoppingCartService.changeProductQuantity(productShoppingCartDTO); }
+
+    @RequestMapping(value = "/get_available_paymethods/{userEmail}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAvailablePaymethods(@PathVariable String userEmail) {
+        List<PayMethods> payMethods = shoppingCartService.getAvailablePaymethods(userEmail);
+        return ResponseEntity.ok(payMethods);
+    }
+
+    @RequestMapping(value = "/get_commerces_in_shopping_cart/{userEmail}", method = RequestMethod.GET)
+    public ResponseEntity<?> getCommercesInUserShoppingCart(@PathVariable String userEmail) {
+        List<Commerce> payMethods = shoppingCartService.getCommercesInUserShoppingCart(userEmail);
+        return ResponseEntity.ok(payMethods);
+    }
+
+    @RequestMapping(value = "/get_commerces_turns/{commerceId}", method = RequestMethod.GET)
+    public ResponseEntity<?> getCommercesTurns(@PathVariable Integer commerceId) {
+        List<LocalTime> turns = shoppingCartService.getCommercesTurns(commerceId);
+        return ResponseEntity.ok(turns);
+    }
+
+    @PostMapping("/confirm_purchase")
+    public void confirmPurchase(@Valid @RequestBody PurchaseDTO purchaseDTO) {
+        shoppingCartService.confirmPurchase(purchaseDTO);
+    }
 
 }
