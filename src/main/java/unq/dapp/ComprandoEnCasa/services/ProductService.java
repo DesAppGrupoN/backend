@@ -37,7 +37,7 @@ public class ProductService {
                     .withImage(productDTO.getImage())
                     .withPrice(productDTO.getPrice())
                     .withId(productDTO.getId())
-                    .withCommerceId((productDTO.getCommerceId()))
+                    .withCommerceId(productDTO.getCommerceId())
                     .build();
             repository.save(product);
         }

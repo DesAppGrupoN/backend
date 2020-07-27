@@ -3,8 +3,10 @@ package unq.dapp.ComprandoEnCasa.webService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import unq.dapp.ComprandoEnCasa.model.domain.PurchaseOrder;
 import unq.dapp.ComprandoEnCasa.model.domain.User;
 import unq.dapp.ComprandoEnCasa.model.domain.commerce.Commerce;
+import unq.dapp.ComprandoEnCasa.model.dtos.PurchaseOrderDTO;
 import unq.dapp.ComprandoEnCasa.model.dtos.UserOauthDTO;
 import unq.dapp.ComprandoEnCasa.services.UserService;
 
@@ -53,5 +55,11 @@ public class UserController {
     @PostMapping("/userLoggedIn")
     public void userLoggedIn(@RequestBody UserOauthDTO userOauthDTO) {
         userService.saveIfNoExists(userOauthDTO);
+    }
+
+    @RequestMapping(value = "/get_purchase_history/{userEmail}", method = RequestMethod.GET)
+    public ResponseEntity<?> getPurchaseHistory(@PathVariable String userEmail) {
+        List<PurchaseOrderDTO> purchaseHistory = userService.getPurchaseHistory(userEmail);
+        return ResponseEntity.ok().body(purchaseHistory);
     }
 }
