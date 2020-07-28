@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import unq.dapp.ComprandoEnCasa.model.exceptions.NotEnoughStockOfProductException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -26,4 +27,9 @@ public class HandlerException {
         return new ResponseEntity<>( "error:  " + result, HttpStatus.BAD_REQUEST);
     }
 
+
+    @ExceptionHandler(NotEnoughStockOfProductException.class)
+    public ResponseEntity<String> notEnoughStockForAProduct(Exception exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

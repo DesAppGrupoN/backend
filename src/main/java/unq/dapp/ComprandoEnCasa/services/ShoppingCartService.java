@@ -14,6 +14,7 @@ import unq.dapp.ComprandoEnCasa.model.dtos.ProductShoppingCartDTO;
 import unq.dapp.ComprandoEnCasa.model.dtos.PurchaseDTO;
 import unq.dapp.ComprandoEnCasa.model.dtos.ShoppingCartDTO;
 import unq.dapp.ComprandoEnCasa.model.dtos.TurnDTO;
+import unq.dapp.ComprandoEnCasa.model.exceptions.NotEnoughStockOfProductException;
 import unq.dapp.ComprandoEnCasa.model.exceptions.UserNotFoundException;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.CommerceRepository;
 import unq.dapp.ComprandoEnCasa.persistence.commerce.ProductRepository;
@@ -191,6 +192,9 @@ public class ShoppingCartService {
                 Product product = cartElement.getProduct();
                 product.setStock(product.getStock() - cartElement.getQuantity());
                 this.productRepository.save(product);
+            }
+            else {
+                throw new NotEnoughStockOfProductException();
             }
         }
     }

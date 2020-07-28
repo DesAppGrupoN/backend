@@ -17,9 +17,6 @@ public class AttentionSchedule {
     private LocalTime openingTime;
     private LocalTime closingTime;
 
-    @Transient
-    private List<Turn> turns;
-
     public Integer getId() {
         return Id;
     }
@@ -59,14 +56,6 @@ public class AttentionSchedule {
 
     public void setClosingTime(LocalTime closingTime) { this.closingTime = closingTime; }
 
-    public List<Turn> getTurns() {
-        return turns;
-    }
-
-    public void setTurns(List<Turn> turns) {
-        this.turns = turns;
-    }
-
     public List<LocalTime> getTurnsForDay() {
         List<LocalTime> turns = new ArrayList<LocalTime>();
         LocalTime hour = this.openingTime;
@@ -85,14 +74,5 @@ public class AttentionSchedule {
     }
 
     public long openHours() { return this.openingTime.until(this.closingTime, ChronoUnit.HOURS); }
-
-    public void assignTurn(Turn turn) {
-        this.turns.add(turn);
-    }
-
-    public void removeTurn(Turn turn) {
-        this.turns.remove(turn);
-    }
-
 
 }
