@@ -51,11 +51,15 @@ public class ProductService {
 
     @Transactional
     public List<Product> getAllByCommerceId(int id) {
-        List<Product> products = repository.findByCommerceId(id);
-        return products.stream().filter(it -> it.getStock() > 0).collect(Collectors.toList());
+        return repository.findByCommerceId(id);
     }
 
     public Category[] getCategories() {
         return Category.values();
+    }
+
+    public List<Product> searchByCommerceId(int commerceId) {
+        List<Product> products = repository.findByCommerceId(commerceId);
+        return products.stream().filter(it -> it.getStock() > 0).collect(Collectors.toList());
     }
 }

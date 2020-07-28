@@ -54,6 +54,12 @@ public class ProductController {
         return ResponseEntity.ok().body(productList);
     }
 
+    @RequestMapping(value = "/search/by_commerce_id/{commerceId}", method = RequestMethod.GET)
+    public ResponseEntity<?> searchByCommerceId(@PathVariable int commerceId) {
+        List<Product> productList = productService.searchByCommerceId(commerceId);
+        return ResponseEntity.ok().body(productList);
+    }
+
     @RequestMapping(value ="/get_categories", method = RequestMethod.GET)
     public ResponseEntity<?> getCategories() {
         return ResponseEntity.ok().body(productService.getCategories());
