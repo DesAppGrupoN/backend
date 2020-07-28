@@ -217,9 +217,9 @@ public class ShoppingCartService {
         List<ShoppingCartDTO> shoppingCartDTOList = new ArrayList<>();
 
         for(Commerce commerce : commerces) {
-            List<Product> products = shoppingCart.getCart().stream().map(CartElement::getProduct).collect(Collectors.toList());
+            List<CartElement> cart = shoppingCart.getCart().stream().filter(it -> it.getProduct().getCommerceId().equals(commerce.getId())).collect(Collectors.toList());
             ShoppingCartDTO shoppingCartDTO = new ShoppingCartDTO();
-            shoppingCartDTO.addAllProducts(products);
+            shoppingCartDTO.getShoppingCart().setShoppingCart(cart);
             shoppingCartDTOList.add(shoppingCartDTO);
             shoppingCartDTO.setCommerceId(commerce.getId());
         }

@@ -14,6 +14,7 @@ import unq.dapp.ComprandoEnCasa.persistence.commerce.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -50,7 +51,8 @@ public class ProductService {
 
     @Transactional
     public List<Product> getAllByCommerceId(int id) {
-        return repository.findByCommerceId(id);
+        List<Product> products = repository.findByCommerceId(id);
+        return products.stream().filter(it -> it.getStock() > 0).collect(Collectors.toList());
     }
 
     public Category[] getCategories() {
